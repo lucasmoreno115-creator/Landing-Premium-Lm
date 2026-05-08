@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consultoria Premium LM | Lucas Moreno</title>
+  <meta name="description" content="Consultoria Premium LM: diagnóstico, estratégia e acompanhamento real para emagrecer com direção, sem extremos." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-soft: #0d0d0d;
+      --bg-card: #111111;
+      --gold: #d6ad37;
+      --gold-soft: #f1d26a;
+      --white: #ffffff;
+      --muted: #b8b8b8;
+      --line: rgba(214, 173, 55, 0.28);
+      --danger: #ff4d4d;
+      --success: #51d47a;
+      --radius: 22px;
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Montserrat', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      color: var(--gold-soft);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: .78rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      letter-spacing: .02em;
+      line-height: .95;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(3.4rem, 8vw, 7.4rem);
+      max-width: 900px;
+    }
+
+    h2 {
+      font-size: clamp(2.4rem, 5.4vw, 4.8rem);
+      max-width: 880px;
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .lead {
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      max-width: 720px;
+      color: #e8e8e8;
+      margin-top: 22px;
+    }
+
+    .gold {
+      color: var(--gold);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 26px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      color: #090909;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      font-size: .88rem;
+      box-shadow: 0 16px 48px rgba(214, 173, 55, .22);
+      transition: transform .2s ease, filter .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.07);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    section {
+      padding: 96px 0;
+      position: relative;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 90px;
+      background:
+        radial-gradient(circle at 72% 32%, rgba(214, 173, 55, .18), transparent 28%),
+        linear-gradient(90deg, rgba(5,5,5,1) 0%, rgba(5,5,5,.92) 42%, rgba(5,5,5,.68) 100%),
+        url('hero-lucas.jpg');
+      background-size: cover;
+      background-position: center right;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .hero-proof {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .proof-pill {
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: #eaeaea;
+      font-size: .88rem;
+      font-weight: 700;
+    }
+
+    .pain {
+      background: var(--bg-soft);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 52px;
+      align-items: center;
+    }
+
+    .pain-card,
+    .method-card,
+    .plan-card,
+    .result-card,
+    .about-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .need-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .need-list strong {
+      display: block;
+      color: var(--white);
+      font-size: 1rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .need-list li {
+      list-style: none;
+      color: #eeeeee;
+      font-weight: 700;
+      margin: 8px 0;
+    }
+
+    .bad li::before {
+      content: '✕';
+      color: var(--danger);
+      margin-right: 8px;
+    }
+
+    .good li::before {
+      content: '✓';
+      color: var(--success);
+      margin-right: 8px;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-top: 38px;
+    }
+
+    .method-card {
+      padding: 24px;
+      min-height: 240px;
+    }
+
+    .number {
+      color: var(--gold);
+      font-weight: 900;
+      font-size: .9rem;
+      margin-bottom: 14px;
+    }
+
+    .method-card h3 {
+      font-size: 1.7rem;
+    }
+
+    .method-card p {
+      font-size: .92rem;
+    }
+
+    .plans {
+      background: var(--bg-soft);
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 38px;
+      align-items: stretch;
+    }
+
+    .plan-card {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+    }
+
+    .plan-card.featured {
+      border-color: var(--gold);
+      transform: scale(1.035);
+      background: linear-gradient(180deg, rgba(214,173,55,.16), rgba(255,255,255,.035));
+    }
+
+    .badge {
+      position: absolute;
+      top: -15px;
+      left: 24px;
+      background: var(--gold);
+      color: #070707;
+      font-weight: 900;
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: .75rem;
+      text-transform: uppercase;
+    }
+
+    .plan-card ul {
+      display: grid;
+      gap: 10px;
+      margin: 6px 0 8px;
+    }
+
+    .plan-card li {
+      list-style: none;
+      color: #e7e7e7;
+      font-size: .94rem;
+    }
+
+    .plan-card li::before {
+      content: '✓';
+      color: var(--gold);
+      margin-right: 8px;
+      font-weight: 900;
+    }
+
+    .ideal {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.045);
+      color: #f0f0f0;
+      font-size: .9rem;
+      margin-top: auto;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 38px;
+    }
+
+    .result-card {
+      min-height: 220px;
+    }
+
+    .result-placeholder {
+      aspect-ratio: 4 / 5;
+      background:
+        linear-gradient(135deg, rgba(214,173,55,.18), transparent),
+        rgba(255,255,255,.045);
+      border: 1px dashed rgba(214,173,55,.45);
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: var(--gold-soft);
+      font-weight: 800;
+      text-align: center;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .about {
+      background: var(--bg-soft);
+    }
+
+    .about-photo {
+      min-height: 520px;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.64)),
+        url('lucas-sobre.jpg');
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255,255,255,.1);
+      box-shadow: var(--shadow);
+    }
+
+    .final-cta {
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(214,173,55,.22), transparent 36%),
+        var(--bg);
+    }
+
+    .final-cta .lead {
+      margin: 18px auto 0;
+    }
+
+    .final-cta .btn {
+      margin-top: 34px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      background: #25d366;
+      color: #06140a;
+      min-height: 52px;
+      padding: 0 20px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      box-shadow: 0 14px 36px rgba(0,0,0,.38);
+      text-transform: uppercase;
+      font-size: .82rem;
+    }
+
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+      font-size: .86rem;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .split,
+      .plans-grid,
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .method-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .plan-card.featured {
+        transform: none;
+      }
+
+      .hero {
+        background:
+          linear-gradient(180deg, rgba(5,5,5,.58), rgba(5,5,5,.96)),
+          url('hero-lucas.jpg');
+        background-size: cover;
+        background-position: center top;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      section {
+        padding: 72px 0;
+      }
+
+      .hero {
+        min-height: 92vh;
+        padding: 94px 0 72px;
+      }
+
+      h1 {
+        font-size: 4rem;
+      }
+
+      h2 {
+        font-size: 3rem;
+      }
+
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions .btn,
+      .btn {
+        width: 100%;
+      }
+
+      .pain-card,
+      .method-card,
+      .plan-card,
+      .result-card,
+      .about-card {
+        padding: 22px;
+      }
+
+      .about-photo {
+        min-height: 420px;
+      }
+
+      .whatsapp-float {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+      }
+
+      footer {
+        padding-bottom: 84px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="whatsapp-float" href="https://wa.me/5500000000000?text=Olá,%20Lucas.%20Quero%20solicitar%20minha%20avaliação." target="_blank" rel="noopener">Falar no WhatsApp</a>
+
+  <header class="hero" id="inicio">
+    <div class="container">
+      <div class="eyebrow">Consultoria Premium LM</div>
+      <h1>Emagrecimento com direção, sem extremos.</h1>
+      <p class="lead">Diagnóstico, estratégia e acompanhamento real para quem decidiu parar de recomeçar e construir um resultado sustentável.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#planos">Solicitar avaliação</a>
+        <a class="btn btn-outline" href="#metodo">Conhecer o método</a>
+      </div>
+      <div class="hero-proof">
+        <span class="proof-pill">Método LM</span>
+        <span class="proof-pill">Treino + nutrição</span>
+        <span class="proof-pill">Acompanhamento estratégico</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="pain" id="dor">
+      <div class="container split">
+        <div>
+          <div class="eyebrow">O ponto real</div>
+          <h2>O problema quase nunca é falta de força de vontade.</h2>
+          <p class="lead">Você não precisa de mais uma dieta. Nem de mais motivação de Instagram. Você precisa de estratégia.</p>
+          <p class="lead">Emagrecer com constância exige direção, acompanhamento e um método que funcione na sua rotina real.</p>
+        </div>
+        <div class="pain-card need-list">
+          <div>
+            <strong>Você não precisa de:</strong>
+            <ul class="bad">
+              <li>mais uma dieta restritiva</li>
+              <li>mais um protocolo genérico</li>
+              <li>motivação que dura 3 dias</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Você precisa de:</strong>
+            <ul class="good">
+              <li>direção</li>
+              <li>acompanhamento</li>
+              <li>execução consistente</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodo">
+      <div class="container">
+        <div class="eyebrow">Método LM</div>
+        <h2>Você não precisa de mais um plano. Precisa de um método.</h2>
+        <p class="lead">O Método LM transforma tentativas soltas em um processo claro, ajustável e sustentável. Cada etapa existe para reduzir erros, aumentar adesão e gerar resultado real.</p>
+
+        <div class="method-grid">
+          <article class="method-card">
+            <div class="number">01</div>
+            <h3>Diagnóstico Inicial</h3>
+            <p>Entendemos rotina, histórico, dificuldades, composição corporal e o que está travando seu resultado.</p>
+          </article>
+          <article class="method-card">
+            <div class="number">02</div>
+            <h3>Estratégia Personalizada</h3>
+            <p>Treino e nutrição organizados para sua realidade, sem protocolo genérico e sem extremismo.</p>
+          </article>
+          <article class="method-card">
+            <div class="number">03</div>
+            <h3>Execução com Clareza</h3>
+            <p>Você sabe exatamente o que fazer, sem excesso de informação e sem depender de motivação.</p>
+          </article>
+          <article class="method-card">
+            <div class="number">04</div>
+            <h3>Ajustes de Rota</h3>
+            <p>Seu progresso é acompanhado e a estratégia evolui conforme resposta, rotina e adesão.</p>
+          </article>
+          <article class="method-card">
+            <div class="number">05</div>
+            <h3>Resultado Sustentável</h3>
+            <p>O objetivo não é perder peso rápido. É construir um processo que você consegue manter.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="plans" id="planos">
+      <div class="container">
+        <div class="eyebrow">Planos</div>
+        <h2>Escolha o nível de acompanhamento ideal para o seu momento.</h2>
+        <p class="lead">Cada pessoa precisa de um nível diferente de estratégia, proximidade e acompanhamento. O objetivo é indicar a decisão certa.</p>
+
+        <div class="plans-grid">
+          <article class="plan-card">
+            <h3>Plano Start</h3>
+            <p><strong>Seu primeiro passo com direção.</strong></p>
+            <ul>
+              <li>Avaliação inicial</li>
+              <li>Treino personalizado</li>
+              <li>Direcionamento nutricional</li>
+              <li>Estratégia inicial</li>
+              <li>1 atendimento para dúvidas</li>
+            </ul>
+            <div class="ideal">Ideal para quem quer começar certo, com clareza e estrutura.</div>
+            <a class="btn btn-outline" href="https://wa.me/5500000000000?text=Olá,%20Lucas.%20Quero%20saber%20mais%20sobre%20o%20Plano%20Start." target="_blank" rel="noopener">Começar pelo Start</a>
+          </article>
+
+          <article class="plan-card featured">
+            <div class="badge">Principal escolha</div>
+            <h3>Consultoria Premium LM</h3>
+            <p><strong>Diagnóstico + estratégia + acompanhamento real.</strong></p>
+            <ul>
+              <li>Consultoria presencial inicial</li>
+              <li>Treino individualizado</li>
+              <li>Estratégia nutricional personalizada</li>
+              <li>Acompanhamento contínuo</li>
+              <li>Ajustes semanais</li>
+              <li>Suporte estratégico direto</li>
+            </ul>
+            <div class="ideal">Ideal para quem quer emagrecer com constância, proximidade e alta performance.</div>
+            <a class="btn" href="https://wa.me/5500000000000?text=Olá,%20Lucas.%20Quero%20solicitar%20minha%20avaliação%20para%20a%20Consultoria%20Premium%20LM." target="_blank" rel="noopener">Quero a Premium LM</a>
+          </article>
+
+          <article class="plan-card">
+            <h3>Consultoria Presencial</h3>
+            <p><strong>Alto nível de acompanhamento e performance.</strong></p>
+            <ul>
+              <li>Avaliação física e postural</li>
+              <li>Acompanhamento presencial</li>
+              <li>Treino guiado</li>
+              <li>Correção técnica em tempo real</li>
+              <li>Estratégia individualizada completa</li>
+            </ul>
+            <div class="ideal">Ideal para quem busca máxima proximidade e correção ao vivo.</div>
+            <a class="btn btn-outline" href="https://wa.me/5500000000000?text=Olá,%20Lucas.%20Quero%20saber%20mais%20sobre%20a%20Consultoria%20Presencial." target="_blank" rel="noopener">Avaliação presencial</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultados">
+      <div class="container">
+        <div class="eyebrow">Resultados reais</div>
+        <h2>Resultado não vem de uma tentativa perfeita. Vem de um processo bem acompanhado.</h2>
+        <p class="lead">Use esta área para inserir antes e depois, depoimentos, prints autorizados ou evoluções de medidas. Sem exagero. Sem promessa falsa. Apenas prova real.</p>
+
+        <div class="results-grid">
+          <article class="result-card">
+            <div class="result-placeholder">Inserir resultado autorizado</div>
+            <h3>Constância</h3>
+            <p>Processo adaptado para rotina real, com ajustes quando necessário.</p>
+          </article>
+          <article class="result-card">
+            <div class="result-placeholder">Inserir depoimento</div>
+            <h3>Direção</h3>
+            <p>Menos tentativa aleatória, mais clareza sobre o que fazer.</p>
+          </article>
+          <article class="result-card">
+            <div class="result-placeholder">Inserir evolução</div>
+            <h3>Resultado</h3>
+            <p>Estratégia construída para emagrecimento sustentável.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="sobre">
+      <div class="container split">
+        <div class="about-photo" aria-label="Foto de Lucas Moreno"></div>
+        <div class="about-card">
+          <div class="eyebrow">Lucas Moreno</div>
+          <h2>Não vendo treino pronto. Construo direção.</h2>
+          <p class="lead">Sou Personal Trainer e Nutricionista. Meu trabalho é unir treino, nutrição e acompanhamento estratégico para ajudar pessoas a emagrecerem com clareza, constância e resultado sustentável.</p>
+          <p class="lead">A Consultoria Premium LM foi criada para quem não quer mais improvisar. É para quem quer ser acompanhado de perto, entender o processo e executar com segurança.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#planos">Ver opções de consultoria</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" id="contato">
+      <div class="container">
+        <div class="eyebrow">Próximo passo</div>
+        <h2>Se você cansou de recomeçar, comece com direção.</h2>
+        <p class="lead">Solicite sua avaliação e descubra qual nível de acompanhamento faz mais sentido para o seu momento.</p>
+        <a class="btn" href="https://wa.me/5500000000000?text=Olá,%20Lucas.%20Quero%20solicitar%20minha%20avaliação." target="_blank" rel="noopener">Solicitar avaliação</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © Lucas Moreno | Método LM | Consultoria Premium LM
+    </div>
+  </footer>
+</body>
+</html>
