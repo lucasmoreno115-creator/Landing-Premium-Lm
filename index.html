@@ -274,6 +274,7 @@
     }
 
     .plan-card {
+      align-items: stretch;
       display: flex;
       flex-direction: column;
       gap: 18px;
@@ -309,6 +310,22 @@
       list-style: none;
       color: #e7e7e7;
       font-size: .94rem;
+    }
+
+    .plan-card .btn {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .result-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      display: block;
     }
 
     .plan-card li::before {
@@ -500,17 +517,9 @@
       <h1>Emagrecimento com direção, sem extremos.</h1>
       <p class="lead">Diagnóstico, estratégia e acompanhamento real para quem decidiu parar de recomeçar e construir um resultado sustentável.</p>
       <div class="hero-actions">
-    <a class="btn"
-       href="https://app.lucasmorenopersonal.com.br/"
-       target="_blank"
-       rel="noopener">
-       Fazer Diagnóstico Estratégico
-    </a>
-
-    <a class="btn btn-outline" href="#metodo">
-       Conhecer o Método
-    </a>
-</div>
+        <a class="btn" href="#planos">Fazer Diagnóstico Estratégico</a>
+        <a class="btn btn-outline" href="#metodo">Conhecer o método</a>
+      </div>
       <div class="hero-proof">
         <span class="proof-pill">Método LM</span>
         <span class="proof-pill">Treino + nutrição</span>
@@ -619,7 +628,7 @@
               <li>Suporte estratégico direto</li>
             </ul>
             <div class="ideal">Ideal para quem quer emagrecer com constância, proximidade e alta performance.</div>
-            <a class="btn" href="https://pages.mfitpersonal.com.br/p/gwa?checkout=true" target="_blank" rel="noopener">Quero o plano premium</a>
+            <a class="btn" href="https://pages.mfitpersonal.com.br/p/gwa?checkout=true" target="_blank" rel="noopener">Descobrir meu plano ideal</a>
           </article>
 
           <article class="plan-card">
@@ -633,39 +642,37 @@
               <li>Estratégia individualizada completa</li>
             </ul>
             <div class="ideal">Ideal para quem busca máxima proximidade e correção ao vivo.</div>
-            <a class="btn btn-outline" href="https://wa.me/5500000000000?text=Olá,%20Lucas.%20Quero%20saber%20mais%20sobre%20a%20Consultoria%20Presencial." target="_blank" rel="noopener">Quero uma avaliação presencial</a>
+            <a class="btn btn-outline" href="https://wa.me/5514991174500?text=Olá,%20Lucas.%20Quero%20saber%20mais%20sobre%20a%20Consultoria%20Presencial." target="_blank" rel="noopener">Solicitar avaliação presencial</a>
           </article>
         </div>
       </div>
     </section>
 
     <section id="resultados">
-  <div class="container">
-    <div class="eyebrow">Resultados reais</div>
-    <h2>Resultado não vem de uma tentativa perfeita. Vem de um processo bem acompanhado.</h2>
-    <p class="lead">Resultados reais de alunos acompanhados pelo Método LM. Sem promessa falsa. Sem extremismo. Apenas processo, constância e direção.</p>
+      <div class="container">
+        <div class="eyebrow">Resultados reais</div>
+        <h2>Resultado não vem de uma tentativa perfeita. Vem de um processo bem acompanhado.</h2>
+        <p class="lead">Use esta área para inserir antes e depois, depoimentos, prints autorizados ou evoluções de medidas. Sem exagero. Sem promessa falsa. Apenas prova real.</p>
 
-    <div class="results-grid">
-      <article class="result-card">
-        <img src="images/resultado-1.jpg" alt="Resultado real de aluno acompanhado pelo Método LM">
-        <h3>Constância</h3>
-        <p>Processo adaptado para rotina real, com ajustes quando necessário.</p>
-      </article>
-
-      <article class="result-card">
-        <img src="images/resultado-2.jpg" alt="Depoimento real de aluno acompanhado pelo Método LM">
-        <h3>Direção</h3>
-        <p>Menos tentativa aleatória, mais clareza sobre o que fazer.</p>
-      </article>
-
-      <article class="result-card">
-        <img src="images/resultado-3.jpg" alt="Evolução real de aluno acompanhado pelo Método LM">
-        <h3>Resultado</h3>
-        <p>Estratégia construída para emagrecimento sustentável.</p>
-      </article>
-    </div>
-  </div>
-</section>
+        <div class="results-grid">
+          <article class="result-card">
+            <div class="result-placeholder">Inserir resultado autorizado</div>
+            <h3>Constância</h3>
+            <p>Processo adaptado para rotina real, com ajustes quando necessário.</p>
+          </article>
+          <article class="result-card">
+            <div class="result-placeholder">Inserir depoimento</div>
+            <h3>Direção</h3>
+            <p>Menos tentativa aleatória, mais clareza sobre o que fazer.</p>
+          </article>
+          <article class="result-card">
+            <div class="result-placeholder">Inserir evolução</div>
+            <h3>Resultado</h3>
+            <p>Estratégia construída para emagrecimento sustentável.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <section class="about" id="sobre">
       <div class="container split">
@@ -687,7 +694,7 @@
         <div class="eyebrow">Próximo passo</div>
         <h2>Descubra seu melhor ponto de partida</h2>
         <p class="lead">Faça seu diagnóstico estratégico e entenda exatamente o que está travando seu resultado e qual o caminho mais eficiente para evoluir.</p>
-        <a class="btn" href="https://app.lucasmorenopersonal.com.br" target="_blank" rel="noopener">Fazer Diagnóstico Estratégico</a>
+        <a class="btn" href="https://wa.me/5514991174500?text=Olá,%20Lucas.%20Quero%20solicitar%20minha%20avaliação." target="_blank" rel="noopener">Fazer Diagnóstico Estratégico</a>
       </div>
     </section>
   </main>
