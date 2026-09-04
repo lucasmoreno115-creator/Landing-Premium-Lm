@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="styles/foundation.css" />
   <link rel="stylesheet" href="styles/home.css" />
   <link rel="stylesheet" href="styles/conversion.css" />
+  <script src="scripts/analytics.js" defer></script>
+  <script src="scripts/conversion.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -63,75 +65,11 @@
     <div class="conversion">
       <button class="conversion__close" type="button" aria-label="Fechar qualificação" data-close-qualification>×</button>
       <div class="conversion__progress" aria-live="polite"><span id="qualification-progress-label">1 de 3</span><span class="conversion__track" aria-hidden="true"><span class="conversion__bar" id="qualification-progress-bar"></span></span></div>
-
       <section class="conversion__step" data-step="1"><p class="eyebrow">3 perguntas rápidas</p><h2 id="qualification-title">Qual é seu principal objetivo hoje?</h2><p class="lead">Escolha a opção que mais se aproxima do que você busca.</p><div class="choice-grid choice-grid--2"><button class="choice" type="button" data-answer="objective" data-value="Emagrecer">Emagrecer</button><button class="choice" type="button" data-answer="objective" data-value="Melhorar composição corporal">Melhorar composição corporal</button><button class="choice" type="button" data-answer="objective" data-value="Ganhar massa muscular">Ganhar massa muscular</button><button class="choice" type="button" data-answer="objective" data-value="Saúde e condicionamento">Saúde e condicionamento</button><button class="choice" type="button" data-answer="objective" data-value="Outro objetivo">Outro</button></div></section>
-
       <section class="conversion__step" data-step="2" hidden><p class="eyebrow">Sua realidade</p><h2>Qual é sua principal dificuldade hoje?</h2><p class="lead">Não precisa explicar tudo agora. Escolha o ponto que mais pesa no seu processo.</p><div class="choice-grid"><button class="choice" type="button" data-answer="difficulty" data-value="Organizar a alimentação">Organizar a alimentação</button><button class="choice" type="button" data-answer="difficulty" data-value="Organizar ou evoluir o treino">Organizar ou evoluir o treino</button><button class="choice" type="button" data-answer="difficulty" data-value="Começo, mas não consigo manter">Começo, mas não consigo manter</button><button class="choice" type="button" data-answer="difficulty" data-value="Fazer o plano caber na rotina">Fazer o plano caber na rotina</button><button class="choice" type="button" data-answer="difficulty" data-value="Faço as coisas, mas não vejo progresso">Faço as coisas, mas não vejo progresso</button><button class="choice" type="button" data-answer="difficulty" data-value="Outra dificuldade">Outra</button></div><button class="conversion__back" type="button" data-back>← Voltar</button></section>
-
       <section class="conversion__step" data-step="3" hidden><p class="eyebrow">Tipo de direção</p><h2>Que tipo de ajuda você procura?</h2><p class="lead">Isso ajuda a direcionar a conversa sem fazer você preencher uma anamnese antes da hora.</p><div class="choice-grid"><button class="choice" type="button" data-answer="help" data-value="Treino e alimentação individualizados">Quero treino + alimentação individualizados</button><button class="choice" type="button" data-answer="help" data-value="Principalmente um treino organizado">Quero principalmente um treino organizado</button><button class="choice" type="button" data-answer="help" data-value="Ainda não sei qual formato faz mais sentido">Ainda não sei qual formato faz mais sentido</button></div><button class="conversion__back" type="button" data-back>← Voltar</button></section>
-
       <section class="conversion__step" data-step="4" hidden><p class="eyebrow">Pronto</p><h2 id="qualification-result-title">Vale continuarmos a conversa.</h2><p class="lead" id="qualification-result-copy">Suas respostas já vão comigo para o WhatsApp. Assim a conversa começa com contexto, não do zero.</p><div class="conversion__summary"><p><strong>Objetivo:</strong> <span data-summary="objective"></span></p><p><strong>Principal dificuldade:</strong> <span data-summary="difficulty"></span></p><p><strong>Ajuda que procura:</strong> <span data-summary="help"></span></p></div><div class="conversion__actions"><a class="button" id="qualification-whatsapp" href="#" target="_blank" rel="noopener">Continuar no WhatsApp</a><button class="conversion__back" type="button" data-restart>Alterar respostas</button></div><p class="conversion__note" id="qualification-route-note"></p></section>
     </div>
   </dialog>
-
-  <script>
-    (() => {
-      const menuButton = document.querySelector('.mobile-menu-button');
-      const menu = document.getElementById('mobile-navigation');
-      const closeMenu = () => { if (!menuButton || !menu) return; menuButton.setAttribute('aria-expanded','false'); menuButton.setAttribute('aria-label','Abrir menu'); menu.hidden = true; };
-      if (menuButton && menu) {
-        menuButton.addEventListener('click', () => { const open = menuButton.getAttribute('aria-expanded') !== 'true'; menuButton.setAttribute('aria-expanded',String(open)); menuButton.setAttribute('aria-label',open ? 'Fechar menu' : 'Abrir menu'); menu.hidden = !open; });
-        menu.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
-        window.addEventListener('resize', () => { if (window.matchMedia('(min-width:64rem)').matches) closeMenu(); });
-      }
-
-      const dialog = document.getElementById('qualification-dialog');
-      if (!dialog) return;
-      const answers = { objective:'', difficulty:'', help:'' };
-      let step = 1;
-      let source = 'unknown';
-      const steps = [...dialog.querySelectorAll('[data-step]')];
-      const label = document.getElementById('qualification-progress-label');
-      const bar = document.getElementById('qualification-progress-bar');
-      const whatsapp = document.getElementById('qualification-whatsapp');
-      const routeNote = document.getElementById('qualification-route-note');
-      const resultTitle = document.getElementById('qualification-result-title');
-
-      window.dataLayer = window.dataLayer || [];
-      const track = (event, detail={}) => { window.dataLayer.push({event,...detail}); document.dispatchEvent(new CustomEvent('lm:conversion',{detail:{event,...detail}})); };
-      const render = () => {
-        steps.forEach(el => { el.hidden = Number(el.dataset.step) !== step; });
-        const visibleStep = Math.min(step,3);
-        label.textContent = step === 4 ? 'Concluído' : `${visibleStep} de 3`;
-        bar.style.width = step === 4 ? '100%' : `${visibleStep * 33.333}%`;
-      };
-      const openFlow = trigger => {
-        source = trigger.dataset.source || 'unknown'; step = 1; answers.objective=''; answers.difficulty=''; answers.help=''; render();
-        track('qualification_started',{source}); dialog.showModal();
-      };
-      const finish = () => {
-        dialog.querySelectorAll('[data-summary]').forEach(el => { el.textContent = answers[el.dataset.summary]; });
-        const trainingRoute = answers.help === 'Principalmente um treino organizado';
-        resultTitle.textContent = trainingRoute ? 'Vamos direcionar você para a opção mais adequada.' : 'Vale continuarmos a conversa.';
-        routeNote.textContent = trainingRoute ? 'Como seu foco principal é treino, vou considerar isso na conversa e evitar empurrar uma solução maior do que você procura.' : 'A conversa é o próximo passo para entender se a Consultoria Premium faz sentido para o seu momento.';
-        const intro = trainingRoute ? 'Olá, Lucas. Vim pelo site e estou procurando principalmente um treino organizado.' : 'Olá, Lucas. Vim pelo site e quero conhecer melhor a Consultoria Premium LM.';
-        const text = `${intro}\n\nObjetivo: ${answers.objective}\nPrincipal dificuldade: ${answers.difficulty}\nTipo de ajuda: ${answers.help}\n\nQuero entender qual é o melhor próximo passo para mim.`;
-        whatsapp.href = `https://wa.me/5514991174500?text=${encodeURIComponent(text)}`;
-        step = 4; render(); track('qualification_completed',{source,route:trainingRoute ? 'training' : 'premium',...answers});
-      };
-
-      document.querySelectorAll('[data-start-qualification]').forEach(el => el.addEventListener('click', () => openFlow(el)));
-      document.querySelectorAll('[data-track]').forEach(el => el.addEventListener('click', () => track('cta_consultoria_click',{source:el.dataset.track})));
-      document.querySelectorAll('[data-direct-whatsapp]').forEach(el => el.addEventListener('click', () => track('whatsapp_click',{source:'footer_direct'})));
-      dialog.querySelectorAll('[data-answer]').forEach(choice => choice.addEventListener('click', () => { answers[choice.dataset.answer] = choice.dataset.value; track(`qualification_q${step}_answered`,{source,answer:choice.dataset.value}); if (step < 3) { step += 1; render(); } else finish(); }));
-      dialog.querySelectorAll('[data-back]').forEach(el => el.addEventListener('click', () => { step = Math.max(1,step-1); render(); }));
-      dialog.querySelector('[data-restart]').addEventListener('click', () => { step = 1; render(); });
-      dialog.querySelector('[data-close-qualification]').addEventListener('click', () => dialog.close());
-      whatsapp.addEventListener('click', () => track('whatsapp_click',{source,route:answers.help === 'Principalmente um treino organizado' ? 'training' : 'premium'}));
-      dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
-      dialog.addEventListener('close', () => track('qualification_closed',{source,step}));
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
-    })();
-  </script>
 </body>
 </html>
