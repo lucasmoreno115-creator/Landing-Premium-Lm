@@ -19,167 +19,330 @@
   />
 
   <link rel="stylesheet" href="styles/foundation.css" />
-
-  <style>
-    /* F1.1-impl-b temporary shell only.
-       Page-specific visual composition will move to F2. */
-    .site-header {
-      border-bottom: 1px solid var(--color-border);
-      background: rgba(244, 242, 237, 0.94);
-    }
-
-    .site-header__inner,
-    .site-footer__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-4);
-      min-height: 4rem;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: baseline;
-      gap: var(--space-2);
-      color: var(--lm-deep);
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .brand__mark {
-      font-family: var(--font-editorial);
-      font-size: 1.5rem;
-      font-weight: 400;
-    }
-
-    .brand__name {
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .site-nav {
-      display: none;
-    }
-
-    .foundation-shell {
-      min-height: calc(100vh - 8rem);
-      display: grid;
-      align-items: center;
-    }
-
-    .foundation-shell__content {
-      padding-block: var(--space-20);
-    }
-
-    .foundation-shell__title {
-      margin-bottom: var(--space-6);
-    }
-
-    .foundation-shell__title .editorial {
-      color: var(--lm-petrol);
-    }
-
-    .foundation-shell__actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-3);
-      margin-top: var(--space-8);
-    }
-
-    .foundation-status {
-      margin-top: var(--space-16);
-      padding-top: var(--space-6);
-      border-top: 1px solid var(--color-border);
-      color: var(--color-text-muted);
-      font-size: var(--text-small);
-    }
-
-    .site-footer {
-      border-top: 1px solid var(--color-border);
-      color: var(--color-text-muted);
-      font-size: var(--text-small);
-    }
-
-    .site-footer p {
-      margin: 0;
-    }
-
-    @media (min-width: 48rem) {
-      .site-header__inner {
-        min-height: 4.75rem;
-      }
-
-      .site-nav {
-        display: flex;
-        align-items: center;
-        gap: var(--space-6);
-      }
-
-      .site-nav a {
-        color: var(--color-text);
-        font-size: var(--text-small);
-        font-weight: 600;
-        text-decoration: none;
-      }
-
-      .site-nav a:hover {
-        color: var(--lm-petrol);
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles/home.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="brand" href="#inicio" aria-label="Lucas Moreno — início">
         <span class="brand__mark" aria-hidden="true">LM</span>
-        <span class="brand__name">Lucas Moreno</span>
+        <span>Lucas Moreno</span>
       </a>
 
       <nav class="site-nav" aria-label="Navegação principal">
         <a href="#consultoria">Consultoria</a>
         <a href="#resultados">Resultados</a>
+        <a href="#processo">Como funciona</a>
         <a href="#sobre">Sobre</a>
-        <a href="https://app.lucasmorenopersonal.com.br/">Portal do Aluno</a>
       </nav>
+
+      <div class="header-actions">
+        <a class="header-portal" href="https://app.lucasmorenopersonal.com.br/">Portal do Aluno</a>
+        <a class="button" href="#consultoria">Conhecer a consultoria</a>
+      </div>
     </div>
   </header>
 
-  <main id="inicio" class="foundation-shell">
-    <section class="section" aria-labelledby="foundation-title">
-      <div class="container foundation-shell__content">
-        <p class="eyebrow">Personal Trainer + Nutricionista</p>
+  <main id="inicio">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Personal Trainer + Nutricionista</p>
+          <h1 id="hero-title" class="display">
+            Emagrecimento com direção.
+            <span class="editorial hero__editorial">Sem extremismo.</span>
+          </h1>
+          <p class="lead">
+            Treinamento, nutrição e acompanhamento individualizado para quem quer resultado sem precisar viver para o fitness.
+          </p>
 
-        <h1 id="foundation-title" class="foundation-shell__title heading-measure">
-          Emagrecimento com direção.<br />
-          <span class="editorial">Sem extremismo.</span>
-        </h1>
+          <div class="hero__actions">
+            <a class="button" href="#consultoria">Conhecer a consultoria</a>
+            <a class="button button--secondary" href="#resultados">Ver resultados</a>
+          </div>
 
-        <p class="lead">
-          Treinamento, nutrição e acompanhamento individualizado para quem quer resultado sem precisar viver para o fitness.
-        </p>
-
-        <div class="foundation-shell__actions" aria-label="Ações principais">
-          <a class="button" href="#consultoria">Conhecer a consultoria</a>
-          <a class="button button--secondary" href="#resultados">Ver resultados</a>
+          <div class="hero__proof" aria-label="Pilares do acompanhamento">
+            <span>Treinamento</span>
+            <span>Nutrição</span>
+            <span>Acompanhamento</span>
+          </div>
         </div>
 
-        <p class="foundation-status">
-          LM 2.0 — foundation integrada. A composição definitiva da Home será construída na F2.
+        <figure class="hero__media">
+          <img
+            src="hero-lucas.jpg"
+            alt="Lucas Moreno em ambiente profissional"
+            width="1200"
+            height="1500"
+            fetchpriority="high"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="identificacao-title">
+      <div class="container identification__copy">
+        <p class="eyebrow">Vida real</p>
+        <h2 id="identificacao-title">Você não precisa viver para o fitness para ter resultado.</h2>
+        <p class="lead">
+          Você provavelmente já sabe que precisa treinar e cuidar da alimentação. O difícil é fazer isso funcionar quando existem trabalho, família, compromissos, finais de semana e imprevistos.
+        </p>
+        <p>
+          É por isso que meu trabalho não começa tentando encaixar você em um protocolo. <strong>Começa entendendo a vida em que esse protocolo precisa funcionar.</strong>
         </p>
       </div>
     </section>
 
-    <span id="consultoria" class="sr-only">Consultoria Premium LM</span>
-    <span id="resultados" class="sr-only">Resultados</span>
-    <span id="sobre" class="sr-only">Sobre Lucas Moreno</span>
+    <section class="section" id="resultados" aria-labelledby="resultados-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Resultados reais</p>
+          <h2 id="resultados-title">Planejamento funciona melhor quando cabe na vida.</h2>
+          <p class="lead">A transformação chama atenção. O processo explica como ela foi construída.</p>
+        </div>
+
+        <div class="results-grid">
+          <article class="card result-card">
+            <img class="result-card__image" src="resultado-1.jpg" alt="Resultado real de acompanhamento — caso 1" loading="lazy" />
+            <div class="result-card__body">
+              <p class="eyebrow">Caso 01</p>
+              <h3>Estratégia construída para a rotina.</h3>
+              <p>Treinamento, alimentação e acompanhamento ajustados ao contexto individual.</p>
+              <div class="result-meta"><span>Treinamento</span><span>Nutrição</span><span>Acompanhamento</span></div>
+            </div>
+          </article>
+
+          <article class="card result-card">
+            <img class="result-card__image" src="resultado-2.jpg" alt="Resultado real de acompanhamento — caso 2" loading="lazy" />
+            <div class="result-card__body">
+              <p class="eyebrow">Caso 02</p>
+              <h3>Consistência antes de perfeição.</h3>
+              <p>Um processo que pudesse continuar mesmo quando a semana não saísse exatamente como o planejado.</p>
+              <div class="result-meta"><span>Planejamento</span><span>Ajustes</span><span>Vida real</span></div>
+            </div>
+          </article>
+
+          <article class="card result-card">
+            <img class="result-card__image" src="resultado-3.jpg" alt="Resultado real de acompanhamento — caso 3" loading="lazy" />
+            <div class="result-card__body">
+              <p class="eyebrow">Caso 03</p>
+              <h3>Resultado sem precisar viver para a academia.</h3>
+              <p>A estratégia é individualizada para objetivo, experiência, disponibilidade e resposta ao processo.</p>
+              <div class="result-meta"><span>Direção</span><span>Progressão</span><span>Continuidade</span></div>
+            </div>
+          </article>
+        </div>
+
+        <p class="result-disclaimer">Resultados individuais variam conforme contexto, adesão, tempo de acompanhamento e características de cada pessoa.</p>
+      </div>
+    </section>
+
+    <section class="positioning surface--deep" aria-label="Posicionamento profissional">
+      <div class="container">
+        <blockquote>
+          Não procuro o plano mais difícil que você consegue seguir. Procuro a estratégia mais eficiente que você consegue sustentar.
+          <cite>Lucas Moreno</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="section" id="processo" aria-labelledby="processo-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">O processo</p>
+          <h2 id="processo-title">Menos improviso. Mais direção.</h2>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-step">
+            <p class="process-step__number">01 — ENTENDER</p>
+            <h3>Sua realidade vem primeiro.</h3>
+            <p>Rotina, objetivo, histórico, preferências e dificuldades orientam a estratégia.</p>
+          </article>
+          <article class="process-step">
+            <p class="process-step__number">02 — PLANEJAR</p>
+            <h3>Treino e alimentação para você.</h3>
+            <p>A estrutura é construída de acordo com o que você precisa e consegue executar.</p>
+          </article>
+          <article class="process-step">
+            <p class="process-step__number">03 — ACOMPANHAR</p>
+            <h3>O plano evolui junto com você.</h3>
+            <p>Check-ins, progressão e ajustes conforme sua resposta, evolução e rotina.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section premium" id="consultoria" aria-labelledby="consultoria-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Consultoria Premium LM</p>
+          <h2 id="consultoria-title">Você não recebe apenas um treino e uma dieta.</h2>
+          <p class="lead">Treinamento, alimentação e acompanhamento são organizados dentro de uma única estratégia individualizada.</p>
+        </div>
+
+        <div class="premium-grid">
+          <article class="premium-feature">
+            <h3>Treinamento</h3>
+            <p>Estruturado de acordo com seu objetivo, experiência, disponibilidade e progressão.</p>
+          </article>
+          <article class="premium-feature">
+            <h3>Nutrição</h3>
+            <p>Planejamento alimentar considerando objetivo, necessidades, preferências e rotina.</p>
+          </article>
+          <article class="premium-feature">
+            <h3>Acompanhamento</h3>
+            <p>Check-ins para avaliar execução, dificuldades, evolução e aderência ao planejamento.</p>
+          </article>
+          <article class="premium-feature">
+            <h3>Ajustes</h3>
+            <p>A estratégia é revisada quando sua resposta ou sua realidade indicarem necessidade.</p>
+          </article>
+        </div>
+
+        <div class="audience-cta">
+          <a class="button" href="#para-quem-e">Entender se faz sentido para mim</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section surface--deep" aria-labelledby="portal-title">
+      <div class="container portal__grid">
+        <div>
+          <p class="eyebrow">Tudo em um só lugar</p>
+          <h2 id="portal-title">Seu planejamento não fica perdido no WhatsApp.</h2>
+          <p class="lead">No Portal LM, treino, alimentação, evolução e orientações ficam organizados em um único ambiente.</p>
+          <div class="portal-list" aria-label="Recursos do Portal LM">
+            <span>Treinos</span>
+            <span>Plano alimentar</span>
+            <span>Progressão</span>
+            <span>Check-in</span>
+            <span>Plano da semana</span>
+          </div>
+        </div>
+
+        <div class="portal__mockup" aria-label="Área reservada para mockup real do Portal LM">
+          <div>
+            <strong>Portal LM</strong>
+            <p>Mockup real do portal será inserido na etapa visual.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="para-quem-e" aria-labelledby="para-quem-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Para quem busca direção</p>
+          <h2 id="para-quem-title">Talvez você esteja procurando exatamente esse tipo de acompanhamento.</h2>
+        </div>
+
+        <div class="audience-grid">
+          <article class="card audience-card">“Quero emagrecer, mas não quero viver de dieta.”</article>
+          <article class="card audience-card">“Academia faz parte da minha vida. Não é a minha vida.”</article>
+          <article class="card audience-card">“Eu consigo começar. Minha dificuldade é manter.”</article>
+          <article class="card audience-card">“Quero parar de tentar resolver tudo sozinho.”</article>
+        </div>
+
+        <div class="audience-cta">
+          <p>Se você se identificou, podemos entender juntos qual é o melhor próximo passo.</p>
+          <a class="button" href="#contato">Quero conhecer a consultoria</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre" aria-labelledby="sobre-title">
+      <div class="container about__grid">
+        <figure class="about__media">
+          <img src="lucas-sobre.jpg" alt="Lucas Moreno em sua rotina profissional" loading="lazy" />
+        </figure>
+
+        <div>
+          <p class="eyebrow">Lucas Moreno</p>
+          <h2 id="sobre-title">Personal Trainer. Nutricionista.</h2>
+          <p class="lead">Estratégia antes de extremismo.</p>
+          <p>Trabalho com treinamento e nutrição para ajudar pessoas a emagrecer, melhorar a composição corporal e cuidar da saúde de uma maneira compatível com a própria rotina.</p>
+          <p>Meu papel não é exigir que você viva como atleta. É usar conhecimento técnico para encontrar a melhor estratégia possível dentro da sua realidade.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="depoimentos-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Além do antes e depois</p>
+          <h2 id="depoimentos-title">A mudança que a foto não mostra.</h2>
+          <p class="lead">Na próxima etapa, esta área receberá depoimentos reais autorizados que mostrem adesão, rotina, organização e experiência de acompanhamento.</p>
+        </div>
+
+        <div class="testimonial-grid">
+          <article class="card testimonial"><p>Depoimento real sobre conseguir manter o processo mesmo com rotina corrida.</p><footer>Aluno(a) — depoimento a inserir</footer></article>
+          <article class="card testimonial"><p>Depoimento real sobre alimentação mais sustentável e menos sensação de restrição.</p><footer>Aluno(a) — depoimento a inserir</footer></article>
+          <article class="card testimonial"><p>Depoimento real sobre treino organizado, ajustes e acompanhamento próximo.</p><footer>Aluno(a) — depoimento a inserir</footer></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Dúvidas frequentes</p>
+          <h2 id="faq-title">Antes de começar.</h2>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Preciso treinar todos os dias?</summary>
+            <p>Não. A frequência é definida considerando objetivo, experiência, disponibilidade e estratégia.</p>
+          </details>
+          <details>
+            <summary>Vou precisar cortar os alimentos que gosto?</summary>
+            <p>Não existe uma regra de proibição geral. O planejamento considera necessidades nutricionais, objetivo, preferências e contexto.</p>
+          </details>
+          <details>
+            <summary>Como funciona o acompanhamento?</summary>
+            <p>Você recebe sua estratégia individualizada e realiza check-ins periódicos para acompanharmos execução, dificuldades e evolução.</p>
+          </details>
+          <details>
+            <summary>A consultoria é online?</summary>
+            <p>Os detalhes do formato comercial serão apresentados de forma clara antes da contratação, de acordo com a modalidade disponível.</p>
+          </details>
+          <details>
+            <summary>Como começo?</summary>
+            <p>O próximo passo será uma qualificação rápida e, em seguida, uma conversa direta para entender se a Consultoria Premium faz sentido para o seu momento.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta surface--deep" id="contato" aria-labelledby="final-title">
+      <div class="container final-cta__inner">
+        <p class="eyebrow">Seu próximo passo</p>
+        <h2 id="final-title">Você não precisa de mais motivação.</h2>
+        <p class="editorial display">Precisa de direção.</p>
+        <p class="lead">Se você quer organizar treinamento e alimentação de uma forma compatível com sua vida, podemos começar por uma conversa.</p>
+        <a class="button" href="#consultoria">Quero conhecer a consultoria</a>
+        <p class="final-cta__microcopy">A microqualificação de 3 perguntas será conectada na etapa de conversão.</p>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="container site-footer__inner">
-      <p>Lucas Moreno</p>
-      <p>Emagrecimento • Treinamento • Saúde</p>
+      <div>
+        <a class="brand" href="#inicio">
+          <span class="brand__mark" aria-hidden="true">LM</span>
+          <span>Lucas Moreno</span>
+        </a>
+        <p class="site-footer__meta">Emagrecimento • Treinamento • Saúde</p>
+      </div>
+
+      <nav class="footer-links" aria-label="Links do rodapé">
+        <a href="#consultoria">Consultoria</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#sobre">Sobre</a>
+        <a href="https://app.lucasmorenopersonal.com.br/">Portal do Aluno</a>
+      </nav>
     </div>
   </footer>
 </body>
