@@ -75,6 +75,7 @@ await run('qualification premium route, focus, back, restart and WhatsApp', asyn
   await trigger.click();
   const dialog = page.locator('#qualification-dialog');
   await expectVisible(dialog);
+  await page.waitForFunction(() => document.activeElement?.closest('[data-step]')?.getAttribute('data-step') === '1', null, { timeout: 5000 });
   assert.equal(await page.evaluate(() => document.activeElement?.closest('[data-step]')?.getAttribute('data-step')), '1');
   await page.locator('[data-step="1"] [data-answer]').first().click();
   assert.equal(await page.locator('#qualification-progress-label').textContent(), '2 de 3');
