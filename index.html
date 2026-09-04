@@ -11,118 +11,126 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/foundation.css" />
   <link rel="stylesheet" href="styles/home.css" />
+  <link rel="stylesheet" href="styles/conversion.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="brand" href="#inicio" aria-label="Lucas Moreno — início"><span class="brand__mark" aria-hidden="true">LM</span><span>Lucas Moreno</span></a>
       <nav class="site-nav" aria-label="Navegação principal"><a href="#consultoria">Consultoria</a><a href="#resultados">Resultados</a><a href="#processo">Como funciona</a><a href="#sobre">Sobre</a></nav>
-      <div class="header-actions"><a class="header-portal" href="https://app.lucasmorenopersonal.com.br/">Portal do Aluno</a><a class="button" href="#consultoria">Conhecer a consultoria</a></div>
+      <div class="header-actions"><a class="header-portal" href="https://app.lucasmorenopersonal.com.br/">Portal do Aluno</a><a class="button" href="#consultoria" data-track="header_consultoria">Conhecer a consultoria</a></div>
       <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobile-navigation" aria-label="Abrir menu"><span class="mobile-menu-button__icon" aria-hidden="true"></span></button>
     </div>
-    <nav class="mobile-nav" id="mobile-navigation" aria-label="Navegação mobile" hidden><div class="container mobile-nav__inner"><a href="#consultoria">Consultoria</a><a href="#resultados">Resultados</a><a href="#processo">Como funciona</a><a href="#sobre">Sobre</a><a href="https://app.lucasmorenopersonal.com.br/">Portal do Aluno</a><a class="button" href="#consultoria">Conhecer a consultoria</a></div></nav>
+    <nav class="mobile-nav" id="mobile-navigation" aria-label="Navegação mobile" hidden><div class="container mobile-nav__inner"><a href="#consultoria">Consultoria</a><a href="#resultados">Resultados</a><a href="#processo">Como funciona</a><a href="#sobre">Sobre</a><a href="https://app.lucasmorenopersonal.com.br/">Portal do Aluno</a><a class="button" href="#consultoria" data-track="mobile_consultoria">Conhecer a consultoria</a></div></nav>
   </header>
 
   <main id="inicio">
     <section class="hero" aria-labelledby="hero-title"><div class="container hero__grid">
-      <div class="hero__copy">
-        <h1 id="hero-title" class="display">Emagrecimento com direção.<span class="editorial hero__editorial">Sem extremismo.</span></h1>
-        <p class="lead">Treinamento, nutrição e acompanhamento individualizado para quem quer resultado sem precisar viver para o fitness.</p>
-        <div class="hero__actions"><a class="button" href="#consultoria">Conhecer a consultoria</a><a class="button button--secondary" href="#resultados">Ver resultados</a></div>
-        <div class="hero__proof" aria-label="Pilares do acompanhamento"><span>Treinamento</span><span>Nutrição</span><span>Acompanhamento</span></div>
-      </div>
+      <div class="hero__copy"><h1 id="hero-title" class="display">Emagrecimento com direção.<span class="editorial hero__editorial">Sem extremismo.</span></h1><p class="lead">Treinamento, nutrição e acompanhamento individualizado para quem quer resultado sem precisar viver para o fitness.</p><div class="hero__actions"><a class="button" href="#consultoria" data-track="hero_consultoria">Conhecer a consultoria</a><a class="button button--secondary" href="#resultados" data-track="hero_resultados">Ver resultados</a></div><div class="hero__proof" aria-label="Pilares do acompanhamento"><span>Treinamento</span><span>Nutrição</span><span>Acompanhamento</span></div></div>
       <figure class="hero__media"><img src="hero-lucas.jpg" alt="Lucas Moreno em ambiente profissional" width="1200" height="1500" fetchpriority="high" /></figure>
     </div></section>
 
-    <section class="section" aria-labelledby="identificacao-title"><div class="container identification__copy">
-      <p class="eyebrow">Vida real</p><h2 id="identificacao-title">Você não precisa viver para o fitness para ter resultado.</h2>
-      <p class="lead">Você provavelmente já sabe que precisa treinar e cuidar da alimentação. O difícil é fazer isso funcionar quando existem trabalho, família, compromissos, finais de semana e imprevistos.</p>
-      <p>É por isso que meu trabalho não começa tentando encaixar você em um protocolo. <strong>Começa entendendo a vida em que esse protocolo precisa funcionar.</strong></p>
-    </div></section>
+    <section class="section" aria-labelledby="identificacao-title"><div class="container identification__copy"><p class="eyebrow">Vida real</p><h2 id="identificacao-title">Você não precisa viver para o fitness para ter resultado.</h2><p class="lead">Você provavelmente já sabe que precisa treinar e cuidar da alimentação. O difícil é fazer isso funcionar quando existem trabalho, família, compromissos, finais de semana e imprevistos.</p><p>É por isso que meu trabalho não começa tentando encaixar você em um protocolo. <strong>Começa entendendo a vida em que esse protocolo precisa funcionar.</strong></p></div></section>
 
-    <section class="section" id="resultados" aria-labelledby="resultados-title"><div class="container">
-      <div class="section-heading"><p class="eyebrow">Resultados reais</p><h2 id="resultados-title">Planejamento funciona melhor quando cabe na vida.</h2><p class="lead">A transformação chama atenção. O processo explica como ela foi construída.</p></div>
-      <div class="results-grid">
-        <article class="card result-card"><img class="result-card__image" src="resultado-1.jpg" alt="Antes e depois de aluna acompanhada — caso 1" loading="lazy" /><div class="result-card__body"><p class="eyebrow">Caso 01 • transformação real</p><h3>35 kg a menos ao longo do processo.</h3><p>Um resultado expressivo construído com planejamento e continuidade. O número chama atenção; o trabalho está em conseguir sustentar o processo.</p><div class="result-meta"><span>−35 kg</span><span>Planejamento</span><span>Continuidade</span></div></div></article>
-        <article class="card result-card"><img class="result-card__image" src="resultado-2.jpg" alt="Antes e depois de aluna acompanhada — caso 2" loading="lazy" /><div class="result-card__body"><p class="eyebrow">Caso 02 • transformação real</p><h3>Mudança visível. Processo individual.</h3><p>Sem atribuir números que não foram registrados aqui: a imagem documenta uma transformação real, enquanto a estratégia respeita contexto, rotina e resposta individual.</p><div class="result-meta"><span>Treinamento</span><span>Nutrição</span><span>Ajustes</span></div></div></article>
-        <article class="card result-card"><img class="result-card__image" src="resultado-3.jpg" alt="Antes e depois de aluna acompanhada — caso 3" loading="lazy" /><div class="result-card__body"><p class="eyebrow">Caso 03 • transformação real</p><h3>Consistência que aparece no resultado.</h3><p>Outro processo real de mudança corporal. O antes e depois mostra dois momentos; o acompanhamento existe para organizar tudo o que acontece entre eles.</p><div class="result-meta"><span>Direção</span><span>Consistência</span><span>Vida real</span></div></div></article>
-      </div>
-      <p class="result-disclaimer">Resultados individuais variam conforme contexto, adesão, tempo de acompanhamento e características de cada pessoa.</p>
-    </div></section>
+    <section class="section" id="resultados" aria-labelledby="resultados-title"><div class="container"><div class="section-heading"><p class="eyebrow">Resultados reais</p><h2 id="resultados-title">Planejamento funciona melhor quando cabe na vida.</h2><p class="lead">A transformação chama atenção. O processo explica como ela foi construída.</p></div><div class="results-grid">
+      <article class="card result-card"><img class="result-card__image" src="resultado-1.jpg" alt="Antes e depois de aluna acompanhada — caso 1" loading="lazy" /><div class="result-card__body"><p class="eyebrow">Caso 01 • transformação real</p><h3>35 kg a menos ao longo do processo.</h3><p>Um resultado expressivo construído com planejamento e continuidade. O número chama atenção; o trabalho está em conseguir sustentar o processo.</p><div class="result-meta"><span>−35 kg</span><span>Planejamento</span><span>Continuidade</span></div></div></article>
+      <article class="card result-card"><img class="result-card__image" src="resultado-2.jpg" alt="Antes e depois de aluna acompanhada — caso 2" loading="lazy" /><div class="result-card__body"><p class="eyebrow">Caso 02 • transformação real</p><h3>Mudança visível. Processo individual.</h3><p>A imagem documenta uma transformação real. A estratégia respeita contexto, rotina e resposta individual.</p><div class="result-meta"><span>Treinamento</span><span>Nutrição</span><span>Ajustes</span></div></div></article>
+      <article class="card result-card"><img class="result-card__image" src="resultado-3.jpg" alt="Antes e depois de aluna acompanhada — caso 3" loading="lazy" /><div class="result-card__body"><p class="eyebrow">Caso 03 • transformação real</p><h3>Consistência que aparece no resultado.</h3><p>O antes e depois mostra dois momentos; o acompanhamento existe para organizar tudo o que acontece entre eles.</p><div class="result-meta"><span>Direção</span><span>Consistência</span><span>Vida real</span></div></div></article>
+    </div><p class="result-disclaimer">Resultados individuais variam conforme contexto, adesão, tempo de acompanhamento e características de cada pessoa.</p></div></section>
 
     <section class="positioning surface--deep" aria-label="Posicionamento profissional"><div class="container"><blockquote>Não procuro o plano mais difícil que você consegue seguir. Procuro a estratégia mais eficiente que você consegue sustentar.<cite>Lucas Moreno</cite></blockquote></div></section>
 
-    <section class="section" id="processo" aria-labelledby="processo-title"><div class="container">
-      <div class="section-heading"><p class="eyebrow">O processo</p><h2 id="processo-title">Menos improviso. Mais direção.</h2></div>
-      <div class="process-grid">
-        <article class="process-step"><p class="process-step__number">01 — ENTENDER</p><h3>Sua realidade vem primeiro.</h3><p>Rotina, objetivo, histórico, preferências e dificuldades orientam a estratégia.</p></article>
-        <article class="process-step"><p class="process-step__number">02 — PLANEJAR</p><h3>Treino e alimentação para você.</h3><p>A estrutura é construída de acordo com o que você precisa e consegue executar.</p></article>
-        <article class="process-step"><p class="process-step__number">03 — ACOMPANHAR</p><h3>O plano evolui junto com você.</h3><p>Check-ins, progressão e ajustes conforme sua resposta, evolução e rotina.</p></article>
-      </div>
-    </div></section>
+    <section class="section" id="processo" aria-labelledby="processo-title"><div class="container"><div class="section-heading"><p class="eyebrow">O processo</p><h2 id="processo-title">Menos improviso. Mais direção.</h2></div><div class="process-grid"><article class="process-step"><p class="process-step__number">01 — ENTENDER</p><h3>Sua realidade vem primeiro.</h3><p>Rotina, objetivo, histórico, preferências e dificuldades orientam a estratégia.</p></article><article class="process-step"><p class="process-step__number">02 — PLANEJAR</p><h3>Treino e alimentação para você.</h3><p>A estrutura é construída de acordo com o que você precisa e consegue executar.</p></article><article class="process-step"><p class="process-step__number">03 — ACOMPANHAR</p><h3>O plano evolui junto com você.</h3><p>Check-ins, progressão e ajustes conforme sua resposta, evolução e rotina.</p></article></div></div></section>
 
-    <section class="section premium" id="consultoria" aria-labelledby="consultoria-title"><div class="container">
-      <div class="section-heading"><p class="eyebrow">Consultoria Premium LM</p><h2 id="consultoria-title">Você não recebe apenas um treino e uma dieta.</h2><p class="lead">Treinamento, alimentação e acompanhamento são organizados dentro de uma única estratégia individualizada.</p></div>
-      <div class="premium-grid">
-        <article class="premium-feature"><h3>Treinamento</h3><p>Estruturado de acordo com seu objetivo, experiência, disponibilidade e progressão.</p></article>
-        <article class="premium-feature"><h3>Nutrição</h3><p>Planejamento alimentar considerando objetivo, necessidades, preferências e rotina.</p></article>
-        <article class="premium-feature"><h3>Acompanhamento</h3><p>Check-ins para avaliar execução, dificuldades, evolução e aderência ao planejamento.</p></article>
-        <article class="premium-feature"><h3>Ajustes</h3><p>A estratégia é revisada quando sua resposta ou sua realidade indicarem necessidade.</p></article>
-      </div>
-      <div class="audience-cta"><a class="button" href="#para-quem-e">Entender se faz sentido para mim</a></div>
-    </div></section>
+    <section class="section premium" id="consultoria" aria-labelledby="consultoria-title"><div class="container"><div class="section-heading"><p class="eyebrow">Consultoria Premium LM</p><h2 id="consultoria-title">Você não recebe apenas um treino e uma dieta.</h2><p class="lead">Treinamento, alimentação e acompanhamento são organizados dentro de uma única estratégia individualizada.</p></div><div class="premium-grid"><article class="premium-feature"><h3>Treinamento</h3><p>Estruturado de acordo com seu objetivo, experiência, disponibilidade e progressão.</p></article><article class="premium-feature"><h3>Nutrição</h3><p>Planejamento alimentar considerando objetivo, necessidades, preferências e rotina.</p></article><article class="premium-feature"><h3>Acompanhamento</h3><p>Check-ins para avaliar execução, dificuldades, evolução e aderência ao planejamento.</p></article><article class="premium-feature"><h3>Ajustes</h3><p>A estratégia é revisada quando sua resposta ou sua realidade indicarem necessidade.</p></article></div><div class="audience-cta"><button class="button" type="button" data-start-qualification data-source="premium">Entender se faz sentido para mim</button></div></div></section>
 
-    <section class="section surface--deep" aria-labelledby="portal-title"><div class="container portal__grid">
-      <div><p class="eyebrow">Portal LM</p><h2 id="portal-title">Seu acompanhamento, organizado em um só lugar.</h2><p class="lead">O novo Portal LM está em construção para centralizar planejamento, evolução e acompanhamento da consultoria em uma experiência mais organizada.</p><div class="portal-list" aria-label="Áreas planejadas para o Portal LM"><span>Treinos</span><span>Plano alimentar</span><span>Progressão</span><span>Check-in</span><span>Plano da semana</span></div></div>
-      <div class="portal__mockup portal__status" aria-label="Portal LM em desenvolvimento"><div><p class="eyebrow">Em desenvolvimento</p><strong>Portal LM 2.0</strong><p>Uma nova experiência está sendo construída para reunir direção, execução e acompanhamento sem depender de informações espalhadas.</p></div></div>
-    </div></section>
+    <section class="section surface--deep" aria-labelledby="portal-title"><div class="container portal__grid"><div><p class="eyebrow">Portal LM</p><h2 id="portal-title">Seu acompanhamento, organizado em um só lugar.</h2><p class="lead">O novo Portal LM está em construção para centralizar planejamento, evolução e acompanhamento da consultoria em uma experiência mais organizada.</p><div class="portal-list" aria-label="Áreas planejadas para o Portal LM"><span>Treinos</span><span>Plano alimentar</span><span>Progressão</span><span>Check-in</span><span>Plano da semana</span></div></div><div class="portal__mockup portal__status" aria-label="Portal LM em desenvolvimento"><div><p class="eyebrow">Em desenvolvimento</p><strong>Portal LM 2.0</strong><p>Uma nova experiência está sendo construída para reunir direção, execução e acompanhamento sem depender de informações espalhadas.</p></div></div></div></section>
 
-    <section class="section" id="para-quem-e" aria-labelledby="para-quem-title"><div class="container">
-      <div class="section-heading"><p class="eyebrow">Para quem busca direção</p><h2 id="para-quem-title">Talvez você esteja procurando exatamente esse tipo de acompanhamento.</h2></div>
-      <div class="audience-grid"><article class="card audience-card">“Quero emagrecer, mas não quero viver de dieta.”</article><article class="card audience-card">“Academia faz parte da minha vida. Não é a minha vida.”</article><article class="card audience-card">“Eu consigo começar. Minha dificuldade é manter.”</article><article class="card audience-card">“Quero parar de tentar resolver tudo sozinho.”</article></div>
-      <div class="audience-cta"><p>Se você se identificou, podemos entender juntos qual é o melhor próximo passo.</p><a class="button" href="#contato">Quero conhecer a consultoria</a></div>
-    </div></section>
+    <section class="section" id="para-quem-e" aria-labelledby="para-quem-title"><div class="container"><div class="section-heading"><p class="eyebrow">Para quem busca direção</p><h2 id="para-quem-title">Talvez você esteja procurando exatamente esse tipo de acompanhamento.</h2></div><div class="audience-grid"><article class="card audience-card">“Quero emagrecer, mas não quero viver de dieta.”</article><article class="card audience-card">“Academia faz parte da minha vida. Não é a minha vida.”</article><article class="card audience-card">“Eu consigo começar. Minha dificuldade é manter.”</article><article class="card audience-card">“Quero parar de tentar resolver tudo sozinho.”</article></div><div class="audience-cta"><p>Se você se identificou, responda três perguntas rápidas para eu entender melhor o seu momento.</p><button class="button" type="button" data-start-qualification data-source="audience">Quero conhecer a consultoria</button></div></div></section>
 
-    <section class="section" id="sobre" aria-labelledby="sobre-title"><div class="container about__grid">
-      <figure class="about__media"><img src="lucas-sobre.jpg" alt="Lucas Moreno em sua rotina profissional" loading="lazy" /></figure>
-      <div><p class="eyebrow">Lucas Moreno</p><h2 id="sobre-title">Estratégia antes de extremismo.</h2><p class="lead">Treinamento e nutrição precisam funcionar fora do papel.</p><p>Meu trabalho é ajudar pessoas a emagrecer, melhorar a composição corporal e cuidar da saúde de uma maneira compatível com a própria rotina.</p><p>Você não precisa viver como atleta. A estratégia precisa encontrar espaço na sua realidade para que o resultado possa ser construído com continuidade.</p></div>
-    </div></section>
+    <section class="section" id="sobre" aria-labelledby="sobre-title"><div class="container about__grid"><figure class="about__media"><img src="lucas-sobre.jpg" alt="Lucas Moreno em sua rotina profissional" loading="lazy" /></figure><div><p class="eyebrow">Lucas Moreno</p><h2 id="sobre-title">Estratégia antes de extremismo.</h2><p class="lead">Treinamento e nutrição precisam funcionar fora do papel.</p><p>Meu trabalho é ajudar pessoas a emagrecer, melhorar a composição corporal e cuidar da saúde de uma maneira compatível com a própria rotina.</p><p>Você não precisa viver como atleta. A estratégia precisa encontrar espaço na sua realidade para que o resultado possa ser construído com continuidade.</p></div></div></section>
 
-    <section class="section" aria-labelledby="experiencia-title"><div class="container">
-      <div class="section-heading"><p class="eyebrow">Além do antes e depois</p><h2 id="experiencia-title">O que o acompanhamento busca resolver.</h2><p class="lead">A foto registra a mudança. O trabalho diário acontece na organização do processo.</p></div>
-      <div class="testimonial-grid">
-        <article class="card testimonial"><p><strong>Fazer o plano caber na semana.</strong></p><p>Uma estratégia precisa continuar utilizável quando aparecem trabalho, compromissos, viagens e imprevistos.</p></article>
-        <article class="card testimonial"><p><strong>Reduzir o tudo ou nada.</strong></p><p>Uma refeição diferente ou um treino perdido não precisam transformar um desvio pontual em abandono do processo.</p></article>
-        <article class="card testimonial"><p><strong>Saber quando ajustar.</strong></p><p>Acompanhamento serve para observar execução, evolução e dificuldades e, quando necessário, mudar a rota em vez de insistir no que não está funcionando.</p></article>
-      </div>
-    </div></section>
+    <section class="section" aria-labelledby="experiencia-title"><div class="container"><div class="section-heading"><p class="eyebrow">Além do antes e depois</p><h2 id="experiencia-title">O que o acompanhamento busca resolver.</h2><p class="lead">A foto registra a mudança. O trabalho diário acontece na organização do processo.</p></div><div class="testimonial-grid"><article class="card testimonial"><p><strong>Fazer o plano caber na semana.</strong></p><p>Uma estratégia precisa continuar utilizável quando aparecem trabalho, compromissos, viagens e imprevistos.</p></article><article class="card testimonial"><p><strong>Reduzir o tudo ou nada.</strong></p><p>Uma refeição diferente ou um treino perdido não precisam transformar um desvio pontual em abandono do processo.</p></article><article class="card testimonial"><p><strong>Saber quando ajustar.</strong></p><p>Acompanhamento serve para observar execução, evolução e dificuldades e, quando necessário, mudar a rota em vez de insistir no que não está funcionando.</p></article></div></div></section>
 
-    <section class="section" aria-labelledby="faq-title"><div class="container">
-      <div class="section-heading"><p class="eyebrow">Dúvidas frequentes</p><h2 id="faq-title">Antes de começar.</h2></div>
-      <div class="faq">
-        <details><summary>Preciso treinar todos os dias?</summary><p>Não. A frequência é definida considerando objetivo, experiência, disponibilidade e estratégia.</p></details>
-        <details><summary>Vou precisar cortar os alimentos que gosto?</summary><p>Não existe uma regra de proibição geral. O planejamento considera necessidades nutricionais, objetivo, preferências e contexto.</p></details>
-        <details><summary>Como funciona o acompanhamento?</summary><p>Você recebe sua estratégia individualizada e realiza check-ins periódicos para acompanharmos execução, dificuldades e evolução.</p></details>
-        <details><summary>A consultoria é online?</summary><p>Os detalhes do formato comercial são apresentados de forma clara antes da contratação, de acordo com a modalidade disponível.</p></details>
-        <details><summary>Como começo?</summary><p>O próximo passo é uma qualificação rápida e, em seguida, uma conversa direta para entender se a Consultoria Premium faz sentido para o seu momento.</p></details>
-      </div>
-    </div></section>
+    <section class="section" aria-labelledby="faq-title"><div class="container"><div class="section-heading"><p class="eyebrow">Dúvidas frequentes</p><h2 id="faq-title">Antes de começar.</h2></div><div class="faq"><details><summary>Preciso treinar todos os dias?</summary><p>Não. A frequência é definida considerando objetivo, experiência, disponibilidade e estratégia.</p></details><details><summary>Vou precisar cortar os alimentos que gosto?</summary><p>Não existe uma regra de proibição geral. O planejamento considera necessidades nutricionais, objetivo, preferências e contexto.</p></details><details><summary>Como funciona o acompanhamento?</summary><p>Você recebe sua estratégia individualizada e realiza check-ins periódicos para acompanharmos execução, dificuldades e evolução.</p></details><details><summary>A consultoria é online?</summary><p>Os detalhes do formato comercial são apresentados de forma clara antes da contratação, de acordo com a modalidade disponível.</p></details><details><summary>Como começo?</summary><p>Você responde três perguntas rápidas e, em seguida, pode iniciar uma conversa comigo no WhatsApp já com o contexto das suas respostas.</p></details></div></div></section>
 
-    <section class="section final-cta surface--deep" id="contato" aria-labelledby="final-title"><div class="container final-cta__inner"><p class="eyebrow">Seu próximo passo</p><h2 id="final-title">Você não precisa de mais motivação.</h2><p class="editorial display">Precisa de direção.</p><p class="lead">Se você quer organizar treinamento e alimentação de uma forma compatível com sua vida, podemos começar por uma conversa.</p><a class="button" href="#consultoria">Quero conhecer a consultoria</a></div></section>
+    <section class="section final-cta surface--deep" id="contato" aria-labelledby="final-title"><div class="container final-cta__inner"><p class="eyebrow">Seu próximo passo</p><h2 id="final-title">Você não precisa de mais motivação.</h2><p class="editorial display">Precisa de direção.</p><p class="lead">Responda três perguntas rápidas. Leva menos de um minuto e ajuda a começar a conversa pelo ponto certo.</p><button class="button" type="button" data-start-qualification data-source="final">Quero conhecer a consultoria</button><p class="final-cta__microcopy">3 perguntas rápidas • menos de 1 minuto</p></div></section>
   </main>
 
-  <footer class="site-footer"><div class="container site-footer__inner"><div><a class="brand" href="#inicio"><span class="brand__mark" aria-hidden="true">LM</span><span>Lucas Moreno</span></a><p class="site-footer__meta">Emagrecimento • Treinamento • Saúde</p></div><nav class="footer-links" aria-label="Links do rodapé"><a href="#consultoria">Consultoria</a><a href="#resultados">Resultados</a><a href="#sobre">Sobre</a><a href="https://app.lucasmorenopersonal.com.br/">Portal do Aluno</a></nav></div></footer>
+  <footer class="site-footer"><div class="container site-footer__inner"><div><a class="brand" href="#inicio"><span class="brand__mark" aria-hidden="true">LM</span><span>Lucas Moreno</span></a><p class="site-footer__meta">Emagrecimento • Treinamento • Saúde</p></div><nav class="footer-links" aria-label="Links do rodapé"><a href="#consultoria">Consultoria</a><a href="#resultados">Resultados</a><a href="#sobre">Sobre</a><a href="https://app.lucasmorenopersonal.com.br/">Portal do Aluno</a><a href="https://wa.me/5514991174500?text=Ol%C3%A1%2C%20Lucas.%20Vim%20pelo%20seu%20site%20e%20quero%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener" data-direct-whatsapp>Contato</a></nav></div></footer>
+
+  <dialog class="conversion-dialog" id="qualification-dialog" aria-labelledby="qualification-title">
+    <div class="conversion">
+      <button class="conversion__close" type="button" aria-label="Fechar qualificação" data-close-qualification>×</button>
+      <div class="conversion__progress" aria-live="polite"><span id="qualification-progress-label">1 de 3</span><span class="conversion__track" aria-hidden="true"><span class="conversion__bar" id="qualification-progress-bar"></span></span></div>
+
+      <section class="conversion__step" data-step="1"><p class="eyebrow">3 perguntas rápidas</p><h2 id="qualification-title">Qual é seu principal objetivo hoje?</h2><p class="lead">Escolha a opção que mais se aproxima do que você busca.</p><div class="choice-grid choice-grid--2"><button class="choice" type="button" data-answer="objective" data-value="Emagrecer">Emagrecer</button><button class="choice" type="button" data-answer="objective" data-value="Melhorar composição corporal">Melhorar composição corporal</button><button class="choice" type="button" data-answer="objective" data-value="Ganhar massa muscular">Ganhar massa muscular</button><button class="choice" type="button" data-answer="objective" data-value="Saúde e condicionamento">Saúde e condicionamento</button><button class="choice" type="button" data-answer="objective" data-value="Outro objetivo">Outro</button></div></section>
+
+      <section class="conversion__step" data-step="2" hidden><p class="eyebrow">Sua realidade</p><h2>Qual é sua principal dificuldade hoje?</h2><p class="lead">Não precisa explicar tudo agora. Escolha o ponto que mais pesa no seu processo.</p><div class="choice-grid"><button class="choice" type="button" data-answer="difficulty" data-value="Organizar a alimentação">Organizar a alimentação</button><button class="choice" type="button" data-answer="difficulty" data-value="Organizar ou evoluir o treino">Organizar ou evoluir o treino</button><button class="choice" type="button" data-answer="difficulty" data-value="Começo, mas não consigo manter">Começo, mas não consigo manter</button><button class="choice" type="button" data-answer="difficulty" data-value="Fazer o plano caber na rotina">Fazer o plano caber na rotina</button><button class="choice" type="button" data-answer="difficulty" data-value="Faço as coisas, mas não vejo progresso">Faço as coisas, mas não vejo progresso</button><button class="choice" type="button" data-answer="difficulty" data-value="Outra dificuldade">Outra</button></div><button class="conversion__back" type="button" data-back>← Voltar</button></section>
+
+      <section class="conversion__step" data-step="3" hidden><p class="eyebrow">Tipo de direção</p><h2>Que tipo de ajuda você procura?</h2><p class="lead">Isso ajuda a direcionar a conversa sem fazer você preencher uma anamnese antes da hora.</p><div class="choice-grid"><button class="choice" type="button" data-answer="help" data-value="Treino e alimentação individualizados">Quero treino + alimentação individualizados</button><button class="choice" type="button" data-answer="help" data-value="Principalmente um treino organizado">Quero principalmente um treino organizado</button><button class="choice" type="button" data-answer="help" data-value="Ainda não sei qual formato faz mais sentido">Ainda não sei qual formato faz mais sentido</button></div><button class="conversion__back" type="button" data-back>← Voltar</button></section>
+
+      <section class="conversion__step" data-step="4" hidden><p class="eyebrow">Pronto</p><h2 id="qualification-result-title">Vale continuarmos a conversa.</h2><p class="lead" id="qualification-result-copy">Suas respostas já vão comigo para o WhatsApp. Assim a conversa começa com contexto, não do zero.</p><div class="conversion__summary"><p><strong>Objetivo:</strong> <span data-summary="objective"></span></p><p><strong>Principal dificuldade:</strong> <span data-summary="difficulty"></span></p><p><strong>Ajuda que procura:</strong> <span data-summary="help"></span></p></div><div class="conversion__actions"><a class="button" id="qualification-whatsapp" href="#" target="_blank" rel="noopener">Continuar no WhatsApp</a><button class="conversion__back" type="button" data-restart>Alterar respostas</button></div><p class="conversion__note" id="qualification-route-note"></p></section>
+    </div>
+  </dialog>
 
   <script>
     (() => {
-      const button = document.querySelector('.mobile-menu-button');
+      const menuButton = document.querySelector('.mobile-menu-button');
       const menu = document.getElementById('mobile-navigation');
-      if (!button || !menu) return;
-      const closeMenu = () => { button.setAttribute('aria-expanded', 'false'); button.setAttribute('aria-label', 'Abrir menu'); menu.hidden = true; };
-      button.addEventListener('click', () => { const willOpen = button.getAttribute('aria-expanded') !== 'true'; button.setAttribute('aria-expanded', String(willOpen)); button.setAttribute('aria-label', willOpen ? 'Fechar menu' : 'Abrir menu'); menu.hidden = !willOpen; });
-      menu.addEventListener('click', (event) => { if (event.target.closest('a')) closeMenu(); });
-      document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
-      window.addEventListener('resize', () => { if (window.matchMedia('(min-width: 64rem)').matches) closeMenu(); });
+      const closeMenu = () => { if (!menuButton || !menu) return; menuButton.setAttribute('aria-expanded','false'); menuButton.setAttribute('aria-label','Abrir menu'); menu.hidden = true; };
+      if (menuButton && menu) {
+        menuButton.addEventListener('click', () => { const open = menuButton.getAttribute('aria-expanded') !== 'true'; menuButton.setAttribute('aria-expanded',String(open)); menuButton.setAttribute('aria-label',open ? 'Fechar menu' : 'Abrir menu'); menu.hidden = !open; });
+        menu.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
+        window.addEventListener('resize', () => { if (window.matchMedia('(min-width:64rem)').matches) closeMenu(); });
+      }
+
+      const dialog = document.getElementById('qualification-dialog');
+      if (!dialog) return;
+      const answers = { objective:'', difficulty:'', help:'' };
+      let step = 1;
+      let source = 'unknown';
+      const steps = [...dialog.querySelectorAll('[data-step]')];
+      const label = document.getElementById('qualification-progress-label');
+      const bar = document.getElementById('qualification-progress-bar');
+      const whatsapp = document.getElementById('qualification-whatsapp');
+      const routeNote = document.getElementById('qualification-route-note');
+      const resultTitle = document.getElementById('qualification-result-title');
+
+      window.dataLayer = window.dataLayer || [];
+      const track = (event, detail={}) => { window.dataLayer.push({event,...detail}); document.dispatchEvent(new CustomEvent('lm:conversion',{detail:{event,...detail}})); };
+      const render = () => {
+        steps.forEach(el => { el.hidden = Number(el.dataset.step) !== step; });
+        const visibleStep = Math.min(step,3);
+        label.textContent = step === 4 ? 'Concluído' : `${visibleStep} de 3`;
+        bar.style.width = step === 4 ? '100%' : `${visibleStep * 33.333}%`;
+      };
+      const openFlow = trigger => {
+        source = trigger.dataset.source || 'unknown'; step = 1; answers.objective=''; answers.difficulty=''; answers.help=''; render();
+        track('qualification_started',{source}); dialog.showModal();
+      };
+      const finish = () => {
+        dialog.querySelectorAll('[data-summary]').forEach(el => { el.textContent = answers[el.dataset.summary]; });
+        const trainingRoute = answers.help === 'Principalmente um treino organizado';
+        resultTitle.textContent = trainingRoute ? 'Vamos direcionar você para a opção mais adequada.' : 'Vale continuarmos a conversa.';
+        routeNote.textContent = trainingRoute ? 'Como seu foco principal é treino, vou considerar isso na conversa e evitar empurrar uma solução maior do que você procura.' : 'A conversa é o próximo passo para entender se a Consultoria Premium faz sentido para o seu momento.';
+        const intro = trainingRoute ? 'Olá, Lucas. Vim pelo site e estou procurando principalmente um treino organizado.' : 'Olá, Lucas. Vim pelo site e quero conhecer melhor a Consultoria Premium LM.';
+        const text = `${intro}\n\nObjetivo: ${answers.objective}\nPrincipal dificuldade: ${answers.difficulty}\nTipo de ajuda: ${answers.help}\n\nQuero entender qual é o melhor próximo passo para mim.`;
+        whatsapp.href = `https://wa.me/5514991174500?text=${encodeURIComponent(text)}`;
+        step = 4; render(); track('qualification_completed',{source,route:trainingRoute ? 'training' : 'premium',...answers});
+      };
+
+      document.querySelectorAll('[data-start-qualification]').forEach(el => el.addEventListener('click', () => openFlow(el)));
+      document.querySelectorAll('[data-track]').forEach(el => el.addEventListener('click', () => track('cta_consultoria_click',{source:el.dataset.track})));
+      document.querySelectorAll('[data-direct-whatsapp]').forEach(el => el.addEventListener('click', () => track('whatsapp_click',{source:'footer_direct'})));
+      dialog.querySelectorAll('[data-answer]').forEach(choice => choice.addEventListener('click', () => { answers[choice.dataset.answer] = choice.dataset.value; track(`qualification_q${step}_answered`,{source,answer:choice.dataset.value}); if (step < 3) { step += 1; render(); } else finish(); }));
+      dialog.querySelectorAll('[data-back]').forEach(el => el.addEventListener('click', () => { step = Math.max(1,step-1); render(); }));
+      dialog.querySelector('[data-restart]').addEventListener('click', () => { step = 1; render(); });
+      dialog.querySelector('[data-close-qualification]').addEventListener('click', () => dialog.close());
+      whatsapp.addEventListener('click', () => track('whatsapp_click',{source,route:answers.help === 'Principalmente um treino organizado' ? 'training' : 'premium'}));
+      dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+      dialog.addEventListener('close', () => track('qualification_closed',{source,step}));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
     })();
   </script>
 </body>
