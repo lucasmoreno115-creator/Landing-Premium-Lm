@@ -20,7 +20,7 @@ assert.ok(data.some(item => item.event === 'consultoria_navigation_click' && ite
 await page.locator('[data-start-qualification][data-source="premium"]').click();
 await page.locator('[data-step="1"] [data-value="Emagrecer"]').click();
 await page.locator('[data-step="2"] [data-value="Organizar a alimentação"]').click();
-await page.locator('[data-step="3"] [data-value="Treino + alimentação individualizados"]').click();
+await page.locator('[data-step="3"] [data-value="Treino e alimentação individualizados"]').click();
 
 data = await page.evaluate(() => window.dataLayer || []);
 const q1 = data.find(item => item.event === 'qualification_q1_answered');
@@ -40,7 +40,7 @@ for (const event of [q1, q2, q3, completed]) {
   const serialized = JSON.stringify(event || {});
   assert.ok(!serialized.includes('Emagrecer'), 'raw objective leaked to analytics');
   assert.ok(!serialized.includes('Organizar a alimentação'), 'raw difficulty leaked to analytics');
-  assert.ok(!serialized.includes('Treino + alimentação individualizados'), 'raw help answer leaked to analytics');
+  assert.ok(!serialized.includes('Treino e alimentação individualizados'), 'raw help answer leaked to analytics');
   assert.equal(Object.prototype.hasOwnProperty.call(event || {}, 'answer'), false, 'legacy raw answer field present');
 }
 
@@ -48,7 +48,7 @@ const href = await page.locator('#qualification-whatsapp').getAttribute('href');
 const decoded = decodeURIComponent((href || '').split('text=')[1] || '');
 assert.match(decoded, /Objetivo: Emagrecer/);
 assert.match(decoded, /Principal dificuldade: Organizar a alimentação/);
-assert.match(decoded, /Tipo de ajuda: Treino \+ alimentação individualizados/);
+assert.match(decoded, /Tipo de ajuda: Treino e alimentação individualizados/);
 
 await page.locator('#qualification-whatsapp').click({ noWaitAfter: true });
 data = await page.evaluate(() => window.dataLayer || []);
