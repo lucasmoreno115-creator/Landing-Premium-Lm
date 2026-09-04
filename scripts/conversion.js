@@ -71,7 +71,7 @@
       'Outra': 'other'
     },
     help: {
-      'Treino + alimentação individualizados': 'premium',
+      'Treino e alimentação individualizados': 'premium',
       'Principalmente um treino organizado': 'training',
       'Ainda não sei qual formato faz mais sentido': 'unsure'
     }
