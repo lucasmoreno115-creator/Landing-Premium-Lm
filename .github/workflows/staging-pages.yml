@@ -104,7 +104,7 @@ jobs:
             --project-name="${STAGING_PROJECT}" \
             --branch="${STAGING_BRANCH}" \
             --commit-hash="${GITHUB_SHA}" \
-            --commit-message="F3.2 staging ${GITHUB_SHA}"
+            --commit-message="LM 2.0 staging ${GITHUB_SHA}"
 
       - name: Wait for stable staging URL
         shell: bash
@@ -129,6 +129,10 @@ jobs:
       - name: Run conversion staging browser QA
         shell: bash
         run: node .github/qa/staging-qa.mjs
+
+      - name: Run analytics privacy and semantics QA
+        shell: bash
+        run: node .github/qa/f3.3-analytics-qa.mjs
 
       - name: Publish validation coordinates
         if: always()
