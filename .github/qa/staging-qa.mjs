@@ -112,22 +112,39 @@ await run('training route and contextual WhatsApp', async () => {
 });
 
 await run('Escape, backdrop and close analytics', async () => {
-  const context = await browser.newContext();
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   const page = await context.newPage();
   await page.goto(baseUrl, { waitUntil: 'networkidle' });
   const trigger = page.locator('[data-start-qualification][data-source="audience"]');
+
   await trigger.click();
   await page.keyboard.press('Escape');
   await page.waitForFunction(() => !document.querySelector('#qualification-dialog')?.open);
   let closed = await lastEvent(page, 'qualification_closed');
   assert.equal(closed?.close_reason, 'escape');
+
   await trigger.click();
-  await page.locator('#qualification-dialog').click({ position: { x: 2, y: 2 } });
+  const dialog = page.locator('#qualification-dialog');
+  const box = await dialog.boundingBox();
+  assert.ok(box, 'dialog bounding box unavailable');
+  const viewport = page.viewportSize();
+  assert.ok(viewport, 'viewport unavailable');
+  const candidates = [
+    { x: Math.max(1, box.x - 12), y: Math.max(1, box.y + 12) },
+    { x: Math.min(viewport.width - 1, box.x + box.width + 12), y: Math.max(1, box.y + 12) },
+    { x: Math.max(1, box.x + 12), y: Math.max(1, box.y - 12) },
+    { x: Math.max(1, box.x + 12), y: Math.min(viewport.height - 1, box.y + box.height + 12) }
+  ];
+  const outside = candidates.find(point => point.x < box.x || point.x > box.x + box.width || point.y < box.y || point.y > box.y + box.height);
+  assert.ok(outside, 'no backdrop coordinate available');
+  await page.mouse.click(outside.x, outside.y);
   await page.waitForFunction(() => !document.querySelector('#qualification-dialog')?.open);
   closed = await lastEvent(page, 'qualification_closed');
   assert.equal(closed?.close_reason, 'backdrop');
+
   await trigger.click();
   await page.locator('[data-close-qualification]').click();
+  await page.waitForFunction(() => !document.querySelector('#qualification-dialog')?.open);
   closed = await lastEvent(page, 'qualification_closed');
   assert.equal(closed?.close_reason, 'close_button');
   await context.close();
