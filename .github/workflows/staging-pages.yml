@@ -16,6 +16,7 @@ concurrency:
 env:
   STAGING_PROJECT: landing-premium-lm-staging
   STAGING_BRANCH: lm-2.0-rebuild
+  STAGING_URL: https://landing-premium-lm-staging.pages.dev
 
 jobs:
   deploy-staging:
@@ -105,13 +106,38 @@ jobs:
             --commit-hash="${GITHUB_SHA}" \
             --commit-message="F3.2 staging ${GITHUB_SHA}"
 
+      - name: Wait for stable staging URL
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 20); do
+            if curl -fsS "${STAGING_URL}" >/dev/null; then
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "Stable staging URL did not become ready in time." >&2
+          exit 1
+
+      - name: Install Playwright
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Run conversion staging browser QA
+        shell: bash
+        run: node .github/qa/staging-qa.mjs
+
       - name: Publish validation coordinates
+        if: always()
         shell: bash
         run: |
           {
             echo "## LM 2.0 staging"
             echo ""
-            echo "- STAGING_URL: https://${STAGING_PROJECT}.pages.dev"
+            echo "- STAGING_URL: ${STAGING_URL}"
             echo "- STAGING_COMMIT_SHA: ${GITHUB_SHA}"
             echo "- SOURCE_BRANCH: ${GITHUB_REF_NAME}"
             echo "- robots: noindex / nofollow"
