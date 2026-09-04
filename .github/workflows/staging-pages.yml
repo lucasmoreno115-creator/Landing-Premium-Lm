@@ -1,0 +1,108 @@
+name: LM 2.0 Staging
+
+on:
+  push:
+    branches:
+      - lm-2.0-rebuild
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lm-2-0-staging
+  cancel-in-progress: true
+
+env:
+  STAGING_PROJECT: landing-premium-lm-staging
+  STAGING_BRANCH: lm-2.0-rebuild
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Checkout exact branch commit
+        uses: actions/checkout@v4
+
+      - name: Verify authoritative source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${GITHUB_REF_NAME}" = "${STAGING_BRANCH}"
+          echo "STAGING_COMMIT_SHA=${GITHUB_SHA}" >> "$GITHUB_ENV"
+          echo "Deploying ${GITHUB_REPOSITORY}@${GITHUB_SHA}"
+
+      - name: Verify required Cloudflare credentials
+        shell: bash
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          if [ -z "${CLOUDFLARE_API_TOKEN:-}" ] || [ -z "${CLOUDFLARE_ACCOUNT_ID:-}" ]; then
+            echo "Missing CLOUDFLARE_API_TOKEN or CLOUDFLARE_ACCOUNT_ID in the GitHub staging environment." >&2
+            exit 1
+          fi
+
+      - name: Build isolated static staging artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .staging-dist
+          mkdir -p .staging-dist
+          cp index.html .staging-dist/
+          cp favicon.ico favicon.png hero-lucas.jpg lucas-sobre.jpg resultado-1.jpg resultado-2.jpg resultado-3.jpg .staging-dist/
+          cp -R styles scripts .staging-dist/
+
+          cat > .staging-dist/robots.txt <<'EOF'
+          User-agent: *
+          Disallow: /
+          EOF
+
+          cat > .staging-dist/_headers <<'EOF'
+          /*
+            X-Robots-Tag: noindex, nofollow, noarchive
+            X-Content-Type-Options: nosniff
+            Referrer-Policy: strict-origin-when-cross-origin
+            Permissions-Policy: camera=(), microphone=(), geolocation=()
+          EOF
+
+      - name: Ensure staging Pages project exists
+        shell: bash
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          if npx --yes wrangler@4 pages project list --json | grep -q "\"name\"[[:space:]]*:[[:space:]]*\"${STAGING_PROJECT}\""; then
+            echo "Cloudflare Pages project ${STAGING_PROJECT} exists."
+          else
+            npx --yes wrangler@4 pages project create "${STAGING_PROJECT}" --production-branch="${STAGING_BRANCH}"
+          fi
+
+      - name: Deploy exact commit to Cloudflare Pages
+        id: deploy
+        shell: bash
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4 pages deploy .staging-dist \
+            --project-name="${STAGING_PROJECT}" \
+            --branch="${STAGING_BRANCH}" \
+            --commit-hash="${GITHUB_SHA}" \
+            --commit-message="F3.2 staging ${GITHUB_SHA}"
+
+      - name: Publish validation coordinates
+        shell: bash
+        run: |
+          {
+            echo "## LM 2.0 staging"
+            echo ""
+            echo "- STAGING_URL: https://${STAGING_PROJECT}.pages.dev"
+            echo "- STAGING_COMMIT_SHA: ${GITHUB_SHA}"
+            echo "- SOURCE_BRANCH: ${GITHUB_REF_NAME}"
+            echo "- robots: noindex / nofollow"
+          } >> "$GITHUB_STEP_SUMMARY"
