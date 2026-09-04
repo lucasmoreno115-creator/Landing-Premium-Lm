@@ -40,7 +40,28 @@
         <a class="header-portal" href="https://app.lucasmorenopersonal.com.br/">Portal do Aluno</a>
         <a class="button" href="#consultoria">Conhecer a consultoria</a>
       </div>
+
+      <button
+        class="mobile-menu-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-navigation"
+        aria-label="Abrir menu"
+      >
+        <span class="mobile-menu-button__icon" aria-hidden="true"></span>
+      </button>
     </div>
+
+    <nav class="mobile-nav" id="mobile-navigation" aria-label="Navegação mobile" hidden>
+      <div class="container mobile-nav__inner">
+        <a href="#consultoria">Consultoria</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#processo">Como funciona</a>
+        <a href="#sobre">Sobre</a>
+        <a href="https://app.lucasmorenopersonal.com.br/">Portal do Aluno</a>
+        <a class="button" href="#consultoria">Conhecer a consultoria</a>
+      </div>
+    </nav>
   </header>
 
   <main id="inicio">
@@ -345,5 +366,38 @@
       </nav>
     </div>
   </footer>
+
+  <script>
+    (() => {
+      const button = document.querySelector('.mobile-menu-button');
+      const menu = document.getElementById('mobile-navigation');
+      if (!button || !menu) return;
+
+      const closeMenu = () => {
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', 'Abrir menu');
+        menu.hidden = true;
+      };
+
+      button.addEventListener('click', () => {
+        const willOpen = button.getAttribute('aria-expanded') !== 'true';
+        button.setAttribute('aria-expanded', String(willOpen));
+        button.setAttribute('aria-label', willOpen ? 'Fechar menu' : 'Abrir menu');
+        menu.hidden = !willOpen;
+      });
+
+      menu.addEventListener('click', (event) => {
+        if (event.target.closest('a')) closeMenu();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu();
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.matchMedia('(min-width: 64rem)').matches) closeMenu();
+      });
+    })();
+  </script>
 </body>
 </html>
