@@ -75,10 +75,20 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           set -euo pipefail
-          if npx --yes wrangler@4 pages project list --json | grep -q "\"name\"[[:space:]]*:[[:space:]]*\"${STAGING_PROJECT}\""; then
+          PROJECT_URL="https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/pages/projects/${STAGING_PROJECT}"
+          HTTP_STATUS="$(curl -sS -o /tmp/pages-project.json -w '%{http_code}' \
+            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            -H 'Content-Type: application/json' \
+            "${PROJECT_URL}")"
+
+          if [ "${HTTP_STATUS}" = "200" ]; then
             echo "Cloudflare Pages project ${STAGING_PROJECT} exists."
-          else
+          elif [ "${HTTP_STATUS}" = "404" ]; then
             npx --yes wrangler@4 pages project create "${STAGING_PROJECT}" --production-branch="${STAGING_BRANCH}"
+          else
+            cat /tmp/pages-project.json >&2
+            echo "Unexpected Cloudflare Pages project lookup status: ${HTTP_STATUS}" >&2
+            exit 1
           fi
 
       - name: Deploy exact commit to Cloudflare Pages
