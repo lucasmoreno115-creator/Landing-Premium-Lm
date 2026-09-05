@@ -134,6 +134,10 @@ jobs:
         shell: bash
         run: node .github/qa/f3.3-analytics-qa.mjs
 
+      - name: Run functional release gate
+        shell: bash
+        run: node .github/qa/f3.5-functional-release-gate.mjs
+
       - name: Publish validation coordinates
         if: always()
         shell: bash
@@ -145,4 +149,5 @@ jobs:
             echo "- STAGING_COMMIT_SHA: ${GITHUB_SHA}"
             echo "- SOURCE_BRANCH: ${GITHUB_REF_NAME}"
             echo "- robots: noindex / nofollow"
+            echo "- release gate: F3.5 functional"
           } >> "$GITHUB_STEP_SUMMARY"
