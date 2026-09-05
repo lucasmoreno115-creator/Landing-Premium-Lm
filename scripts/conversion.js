@@ -1,6 +1,14 @@
 (() => {
   'use strict';
 
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  const forceTopOnEntry = () => {
+    if (window.location.hash) return;
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  };
+  forceTopOnEntry();
+  window.addEventListener('pageshow', forceTopOnEntry);
+
   const analytics = window.LMAnalytics || { track: () => {} };
 
   const menuButton = document.querySelector('.mobile-menu-button');
