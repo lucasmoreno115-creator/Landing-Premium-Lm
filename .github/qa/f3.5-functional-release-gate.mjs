@@ -70,7 +70,7 @@ assert.ok(!/\bTODO\b/.test(bodyText), 'forbidden release placeholder: TODO');
 for (const forbidden of ['Lorem ipsum', 'Depoimento fictício', 'placeholder']) {
   assert.ok(!bodyText.toLowerCase().includes(forbidden.toLowerCase()), `forbidden release placeholder: ${forbidden}`);
 }
-assert.match(bodyText, /novo Portal LM está sendo desenvolvido/i, 'Portal must remain explicitly described as in development');
+assert.match(bodyText, /novo Portal LM está (?:em construção|sendo desenvolvido)/i, 'Portal must remain explicitly described as in development');
 
 // Functional release cannot contain runtime errors or horizontal overflow.
 assert.deepEqual(consoleErrors, [], `console errors: ${consoleErrors.join(' | ')}`);
