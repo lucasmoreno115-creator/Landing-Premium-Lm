@@ -185,7 +185,12 @@
   background: rgba(255, 253, 250, 0.74);
   box-shadow: var(--shadow-sm);
 }
-.result-card__image { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.result-card__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: #ebe8e1;
+}
 .result-card__body { padding: var(--space-6); }
 .result-card__body .eyebrow { margin-bottom: var(--space-3); }
 .result-card__body h3 { font-size: clamp(1.35rem, 4vw, 1.65rem); }
@@ -406,6 +411,11 @@
 }
 
 @media (max-width: 47.999rem) {
+  .hero__media img {
+    aspect-ratio: 16 / 10;
+    object-position: center 18%;
+  }
+
   .results-grid {
     grid-auto-flow: column;
     grid-auto-columns: minmax(82%, 1fr);
