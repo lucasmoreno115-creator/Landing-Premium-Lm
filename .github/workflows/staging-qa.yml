@@ -1,0 +1,60 @@
+name: LM 2.0 Staging QA
+
+on:
+  workflow_run:
+    workflows:
+      - LM 2.0 Staging
+    types:
+      - completed
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lm-2-0-staging-qa
+  cancel-in-progress: true
+
+env:
+  STAGING_URL: https://landing-premium-lm-staging.pages.dev
+
+jobs:
+  browser-qa:
+    if: >-
+      ${{ github.event.workflow_run.conclusion == 'success' &&
+          github.event.workflow_run.head_branch == 'lm-2.0-rebuild' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout deployed commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Record authoritative coordinates
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "STAGING_COMMIT_SHA=${{ github.event.workflow_run.head_sha }}" >> "$GITHUB_ENV"
+          echo "Validating ${STAGING_URL} at ${{ github.event.workflow_run.head_sha }}"
+
+      - name: Install Playwright
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Run conversion staging browser QA
+        shell: bash
+        run: node .github/qa/staging-qa.mjs
+
+      - name: Publish QA coordinates
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## LM 2.0 staging browser QA"
+            echo ""
+            echo "- STAGING_URL: ${STAGING_URL}"
+            echo "- STAGING_COMMIT_SHA: ${STAGING_COMMIT_SHA}"
+            echo "- SOURCE_BRANCH: lm-2.0-rebuild"
+          } >> "$GITHUB_STEP_SUMMARY"
