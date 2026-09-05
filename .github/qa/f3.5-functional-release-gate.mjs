@@ -66,7 +66,8 @@ assert.match(decodeURIComponent((handoff || '').split('text=')[1] || ''), /Consu
 
 // Release must not ship developer placeholders or fake social proof markers.
 const bodyText = await page.locator('body').innerText();
-for (const forbidden of ['TODO', 'Lorem ipsum', 'Depoimento fictício', 'placeholder']) {
+assert.ok(!/\bTODO\b/.test(bodyText), 'forbidden release placeholder: TODO');
+for (const forbidden of ['Lorem ipsum', 'Depoimento fictício', 'placeholder']) {
   assert.ok(!bodyText.toLowerCase().includes(forbidden.toLowerCase()), `forbidden release placeholder: ${forbidden}`);
 }
 assert.match(bodyText, /novo Portal LM está sendo desenvolvido/i, 'Portal must remain explicitly described as in development');
