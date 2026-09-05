@@ -411,9 +411,15 @@
 }
 
 @media (max-width: 47.999rem) {
+  .hero__media {
+    max-height: 15rem;
+  }
+
   .hero__media img {
-    aspect-ratio: 16 / 10;
-    object-position: center 18%;
+    display: block;
+    height: clamp(13rem, 52vw, 15rem);
+    aspect-ratio: auto;
+    object-position: center 16%;
   }
 
   .results-grid {
