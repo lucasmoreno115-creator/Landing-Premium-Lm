@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="LM">
+<rect width="128" height="128" rx="18" fill="#F4F2ED"/>
+<path d="M16 17H112V21H16Z M16 107H112V111H16Z" fill="#A78B62"/>
+<text x="64" y="92" font-family="Georgia,'Times New Roman',serif" font-size="85" font-weight="400" letter-spacing="-9" text-anchor="middle" fill="#09263A">LM</text>
+</svg>
