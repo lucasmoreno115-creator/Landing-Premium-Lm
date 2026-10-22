@@ -13,15 +13,15 @@ Cálculo: trimestral = 229,90 × 3 × 0,87 = 600,039 (arredondado a R$ 600,04); 
 ## Checkouts
 
 - Mensal: https://mtapp.com.br/pay/c/d8751e51 (informado pelo responsável).
-- Trimestral: **PENDENTE** — criar o plano no Master Training, confirmar valor e condições, obter o link.
-- Semestral: **PENDENTE** — criar o plano no Master Training, confirmar valor e condições, obter o link.
+- Trimestral: https://mtapp.com.br/pay/c/58617e15 (associado pela ordem dos links enviados; **confirmar plano e valor no checkout**).
+- Semestral: https://mtapp.com.br/pay/c/0ff9188d (associado pela ordem dos links enviados; **confirmar plano e valor no checkout**).
 
-Os planos pendentes aparecem sem botão de pagamento para impedir a contratação do produto errado. Não utilizar o link mensal nos outros planos.
+Os três cards possuem links próprios. Os dois links novos foram atribuídos na ordem em que foram enviados; ainda é necessário validar a associação e os valores exibidos no checkout antes da publicação. Não utilizar o link mensal nos outros planos.
 
 ## Critérios para liberação
 
 1. Validar no Master Training os valores totais, prazo de acesso, recorrência, parcelamento, renovação e cancelamento. Não assumir que “equivalente mensal” seja valor de parcela.
-2. Substituir o aviso de indisponibilidade de cada card pelo botão de checkout com URL individual, `target="_blank"`, `rel="noopener noreferrer"` e `data-track` próprio.
+2. Confirmar a associação: `58617e15` = trimestral e `0ff9188d` = semestral. Verificar os botões com URL individual, `target="_blank"`, `rel="noopener noreferrer"` e `data-track` próprio.
 3. Testar checkout de cada plano em mobile e desktop, confirmar nome e valor do plano na página externa antes de publicar.
 4. Testar navegação por teclado, layout 360px, 390px, tablet e desktop; verificar rastreamento sem dados pessoais.
 5. Não alterar produção sem revisão do PR e validação do ambiente de staging.
