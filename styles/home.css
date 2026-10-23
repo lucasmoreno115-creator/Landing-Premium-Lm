@@ -723,3 +723,22 @@
   .premium-feature:hover, .premium-feature:hover .premium-feature__icon-wrap,
   .result-card:hover .result-card__image, .pricing-card:hover, .button:hover { transform: none !important; }
 }
+
+/* Defensive sizing: prevent oversized intrinsic SVG dimensions on desktop. */
+.premium-feature__icon-wrap {
+  width: 3.25rem;
+  height: 3.25rem;
+  min-width: 3.25rem;
+  min-height: 3.25rem;
+  flex: none;
+}
+.premium-feature__icon,
+.premium-feature__icon-wrap > svg {
+  width: 1.625rem !important;
+  height: 1.625rem !important;
+  min-width: 1.625rem;
+  min-height: 1.625rem;
+  max-width: 1.625rem;
+  max-height: 1.625rem;
+  flex: none;
+}
