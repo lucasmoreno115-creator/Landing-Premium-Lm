@@ -675,3 +675,51 @@
   .master-training__visual-copy h2 { max-width: 19ch; }
   .pricing-card { padding: 1.5rem; }
 }
+
+/* Premium LM — meaningful icons and restrained microinteractions. */
+.premium-feature {
+  padding: clamp(1.35rem, 2.6vw, 2rem);
+  border: 1px solid rgba(244,242,237,.19);
+  border-radius: .45rem;
+  background: rgba(244,242,237,.035);
+  transition: background-color .25s ease, border-color .25s ease, transform .25s ease;
+}
+.premium-feature__icon-wrap {
+  display: inline-grid;
+  width: 3.25rem;
+  height: 3.25rem;
+  place-items: center;
+  margin-bottom: 1.3rem;
+  border: 1px solid rgba(223,203,168,.34);
+  border-radius: .4rem;
+  background: rgba(223,203,168,.09);
+  color: #dfcba8;
+  transition: background-color .25s ease, border-color .25s ease, transform .25s ease;
+}
+.premium-feature__icon { display: block; width: 1.65rem; height: 1.65rem; }
+.premium-feature h3 { margin-bottom: .6rem; }
+.premium-feature p { margin-bottom: 0; }
+@media (hover: hover) and (pointer: fine) {
+  .premium-feature:hover {
+    transform: translateY(-4px);
+    border-color: rgba(223,203,168,.45);
+    background: rgba(244,242,237,.075);
+  }
+  .premium-feature:hover .premium-feature__icon-wrap {
+    transform: translateY(-2px);
+    border-color: rgba(223,203,168,.65);
+    background: rgba(223,203,168,.15);
+  }
+  .result-card__image { transition: transform .4s ease, filter .4s ease; }
+  .result-card:hover .result-card__image { transform: scale(1.018); }
+  .pricing-card { transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
+  .pricing-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(23,50,77,.09); }
+  .button { transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease; }
+  .button:hover { transform: translateY(-2px); }
+  .button:active { transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .premium-feature, .premium-feature__icon-wrap, .result-card__image, .pricing-card, .button { transition: none !important; }
+  .premium-feature:hover, .premium-feature:hover .premium-feature__icon-wrap,
+  .result-card:hover .result-card__image, .pricing-card:hover, .button:hover { transform: none !important; }
+}
