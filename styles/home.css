@@ -617,3 +617,61 @@
 @media (min-width: 48rem) {
   .premium-grid { row-gap: 1.5rem; }
 }
+
+/* LM editorial layout rhythm — consistent alignment, visual hierarchy and pacing. */
+:root { --section-space: clamp(4.25rem, 7vw, 6.75rem); }
+.section > .container { min-width: 0; }
+.section-heading { max-width: 60rem; margin-bottom: clamp(2rem, 4.5vw, 3.25rem); }
+.section-heading h2 {
+  max-width: 24ch;
+  margin-bottom: .9rem;
+  font-size: clamp(2rem, 4.2vw, 3.65rem);
+  line-height: 1.12;
+  letter-spacing: -.045em;
+}
+.section-heading .lead { max-width: 38rem; line-height: 1.6; }
+.section-heading .eyebrow { margin-bottom: .8rem; }
+.hero__copy h1 { max-width: 15ch; }
+.hero__copy .lead { max-width: 32rem; margin-top: 1.5rem; line-height: 1.65; }
+.hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+.results-grid { align-items: start; }
+.result-card__body { max-width: 24rem; }
+.result-card__body h3 { max-width: 22ch; font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.3; }
+.result-card__body p { font-size: .92rem; line-height: 1.55; }
+.premium-grid { align-items: stretch; }
+.premium-feature { padding-block: 1.5rem; }
+.premium-feature h3 { font-size: clamp(1.2rem, 2vw, 1.55rem); line-height: 1.2; }
+.premium-feature p { max-width: 32ch; line-height: 1.65; }
+.premium .audience-cta { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+.master-training__visual-copy h2 { max-width: 18ch; line-height: 1.13; letter-spacing: -.04em; }
+.master-training__visual-copy .lead { max-width: 30rem; line-height: 1.65; }
+.master-training__visual-media { box-shadow: 0 16px 44px rgba(23,50,77,.10); }
+.pricing-card { display: flex; flex-direction: column; }
+.pricing-card h3 { max-width: 23ch; line-height: 1.25; }
+.pricing-card__detail { margin-top: auto; }
+.about__grid > div:last-child { max-width: 33rem; }
+.about__grid h2 { max-width: 16ch; font-size: clamp(2.15rem, 4vw, 3.5rem); line-height: 1.12; }
+.about__grid p { max-width: 36rem; }
+.faq { max-width: 58rem; }
+.faq summary { font-weight: 650; }
+.final-cta__inner { max-width: 44rem; }
+.final-cta h2 { font-size: clamp(2.5rem, 5.4vw, 4.3rem); }
+.final-cta .lead { max-width: 35rem; }
+@media (min-width: 64rem) {
+  .section-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .7fr); column-gap: clamp(2rem, 5vw, 5rem); align-items: end; }
+  .section-heading .eyebrow { grid-column: 1 / -1; }
+  .section-heading h2 { grid-column: 1; margin-bottom: 0; }
+  .section-heading .lead { grid-column: 2; margin-bottom: .25rem; font-size: 1.05rem; }
+  .premium .section-heading, .pricing .section-heading { max-width: none; }
+  .hero__grid { gap: clamp(3rem, 6vw, 6rem); }
+  .about__grid { gap: clamp(3rem, 7vw, 7rem); }
+  .master-training__visual-grid { gap: clamp(3rem, 6vw, 6rem); }
+}
+@media (max-width: 47.999rem) {
+  .section-heading h2 { max-width: 21ch; }
+  .hero__copy h1 { max-width: 14ch; }
+  .hero__actions .button { min-height: 3.1rem; }
+  .premium-feature { padding-block: 1.25rem; }
+  .master-training__visual-copy h2 { max-width: 19ch; }
+  .pricing-card { padding: 1.5rem; }
+}
