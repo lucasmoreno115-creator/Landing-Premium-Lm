@@ -88,6 +88,7 @@
   const label = document.getElementById('qualification-progress-label');
   const bar = document.getElementById('qualification-progress-bar');
   const whatsapp = document.getElementById('qualification-whatsapp');
+  const presencialLink = document.getElementById('qualification-presencial');
   const routeNote = document.getElementById('qualification-route-note');
   const resultTitle = document.getElementById('qualification-result-title');
   const closeButton = dialog.querySelector('[data-close-qualification]');
@@ -148,6 +149,10 @@
       : 'Olá, Lucas. Vim pelo site e quero conhecer melhor a Consultoria Premium LM.';
     const text = `${intro}\n\nObjetivo: ${answers.objective}\nPrincipal dificuldade: ${answers.difficulty}\nTipo de ajuda: ${answers.help}\n\nQuero entender qual é o melhor próximo passo para mim.`;
     whatsapp.href = `https://wa.me/5514991174500?text=${encodeURIComponent(text)}`;
+    if (presencialLink) {
+      const params = new URLSearchParams({ objetivo: answers.objective });
+      presencialLink.href = `presencial.html?${params.toString()}`;
+    }
 
     step = 4;
     completed = true;
@@ -200,6 +205,10 @@
   closeButton?.addEventListener('click', () => {
     closeReason = 'close_button';
     dialog.close();
+  });
+
+  presencialLink?.addEventListener('click', () => {
+    analytics.track('presencial_details_click', { source, objective_code: answerCodes.objective, qualification_completed: completed });
   });
 
   whatsapp?.addEventListener('click', () => {
