@@ -100,11 +100,7 @@
     presencial.href = 'presencial.html?' + params.toString();
     online.href = 'online.html?' + params.toString();
     title.textContent = answers.name + ', qual é seu principal objetivo?';
-    const message = 'Olá, Lucas! Meu nome é ' + answers.name +
-      '. Meu objetivo é ' + answers.objective +
-      '. Meu prazo desejado é ' + answers.deadline +
-      '. Gostaria de saber mais sobre o Plano Recomeço e suas condições.';
-    recomeco.href = 'https://wa.me/5514991174500?text=' + encodeURIComponent(message);
+    recomeco.href = 'recomeco.html?' + params.toString();
     step = 4;
     completed = true;
     render();
