@@ -78,4 +78,5 @@ const source=new URLSearchParams(location.search).get('source')||'page';
   online?.addEventListener('click', () => analyticsSafe('online_details_click', { source }));
   recomeco?.addEventListener('click', () => analyticsSafe('recomeco_inquiry_click', { source }));
 
+render();
 })();
