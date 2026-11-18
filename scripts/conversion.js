@@ -47,198 +47,128 @@
   });
 
   const dialog = document.getElementById('qualification-dialog');
-  const qualificationTriggers = document.querySelectorAll('[data-start-qualification]');
-  const fallbackWhatsApp = 'https://wa.me/5514991174500?text=' + encodeURIComponent('Olá, Lucas. Vim pelo seu site e quero conhecer melhor a Consultoria Premium LM.');
-
+  const triggers = document.querySelectorAll('[data-start-qualification]');
+  const analyticsSafe = (event, data) => analytics.track(event, data);
   if (!dialog || typeof dialog.showModal !== 'function') {
-    qualificationTriggers.forEach(element => {
-      element.addEventListener('click', () => {
-        analytics.track('qualification_fallback', { source: element.dataset.source || 'unknown', route: 'direct' });
-        window.location.href = fallbackWhatsApp;
-      });
-    });
+    triggers.forEach(button => button.addEventListener('click', () => {
+      window.location.href = '#planos';
+    }));
     return;
   }
 
-  const answers = { objective: '', difficulty: '', help: '' };
-  const answerCodes = { objective: '', difficulty: '', help: '' };
-  const codeMaps = {
-    objective: {
-      'Emagrecer': 'weight_loss',
-      'Melhorar composição corporal': 'body_comp',
-      'Ganhar massa muscular': 'muscle_gain',
-      'Saúde e condicionamento': 'health_conditioning',
-      'Outro': 'other'
-    },
-    difficulty: {
-      'Organizar a alimentação': 'nutrition_organization',
-      'Organizar ou evoluir o treino': 'training_organization',
-      'Começo, mas não consigo manter': 'consistency',
-      'Fazer o plano caber na rotina': 'routine_fit',
-      'Faço as coisas, mas não vejo progresso': 'no_progress',
-      'Outra': 'other'
-    },
-    help: {
-      'Treino e alimentação individualizados': 'premium',
-      'Principalmente um treino organizado': 'training',
-      'Ainda não sei qual formato faz mais sentido': 'unsure'
-    }
-  };
   const steps = [...dialog.querySelectorAll('[data-step]')];
-  const label = document.getElementById('qualification-progress-label');
-  const bar = document.getElementById('qualification-progress-bar');
-  const whatsapp = document.getElementById('qualification-whatsapp');
-  const presencialLink = document.getElementById('qualification-presencial');
-  const routeNote = document.getElementById('qualification-route-note');
-  const resultTitle = document.getElementById('qualification-result-title');
-  const closeButton = dialog.querySelector('[data-close-qualification]');
-  const restartButton = dialog.querySelector('[data-restart]');
-
+  const answers = { name: '', objective: '', deadline: '' };
+  const nameInput = document.getElementById('qualification-name');
+  const progressLabel = document.getElementById('qualification-progress-label');
+  const progressBar = document.getElementById('qualification-progress-bar');
+  const title = document.getElementById('qualification-objective-title');
+  const presencial = document.getElementById('qualification-presencial');
+  const online = document.getElementById('qualification-online');
+  const recomeco = document.getElementById('qualification-recomeco');
   let step = 1;
   let source = 'unknown';
   let returnFocus = null;
   let closeReason = 'unknown';
   let completed = false;
 
-  const route = () => answerCodes.help === 'training' ? 'training' : 'premium';
-
-  const focusCurrentStep = () => {
+  function render() {
+    steps.forEach(section => { section.hidden = Number(section.dataset.step) !== step; });
+    progressLabel.textContent = step === 4 ? 'Concluído' : step + ' de 3';
+    progressBar.style.width = (step === 4 ? 100 : step * 100 / 3) + '%';
     requestAnimationFrame(() => {
-      const current = dialog.querySelector(`[data-step="${step}"]`);
-      const target = current?.querySelector('button, a, [tabindex]:not([tabindex="-1"])');
-      target?.focus({ preventScroll: true });
+      const active = steps.find(section => Number(section.dataset.step) === step);
+      active?.querySelector('input, button, a')?.focus({ preventScroll: true });
     });
-  };
+  }
 
-  const render = ({ focus = true } = {}) => {
-    steps.forEach(element => { element.hidden = Number(element.dataset.step) !== step; });
-    const visibleStep = Math.min(step, 3);
-    label.textContent = step === 4 ? 'Concluído' : `${visibleStep} de 3`;
-    bar.style.width = step === 4 ? '100%' : `${visibleStep * 33.333}%`;
-    if (focus) focusCurrentStep();
-  };
-
-  const resetAnswers = () => {
-    Object.keys(answers).forEach(key => { answers[key] = ''; answerCodes[key] = ''; });
+  function reset() {
+    answers.name = '';
+    answers.objective = '';
+    answers.deadline = '';
+    nameInput.value = '';
     step = 1;
     completed = false;
-  };
+  }
 
-  const openFlow = trigger => {
-    if (dialog.open) return;
-    source = trigger.dataset.source || 'unknown';
-    returnFocus = trigger;
-    closeReason = 'unknown';
-    resetAnswers();
-    render({ focus: false });
-    analytics.track('qualification_started', { source });
-    dialog.showModal();
-    focusCurrentStep();
-  };
-
-  const finish = () => {
-    dialog.querySelectorAll('[data-summary]').forEach(element => { element.textContent = answers[element.dataset.summary]; });
-    const trainingRoute = route() === 'training';
-    resultTitle.textContent = trainingRoute ? 'Vamos direcionar você para a opção mais adequada.' : 'Vale continuarmos a conversa.';
-    routeNote.textContent = trainingRoute
-      ? 'Como seu foco principal é treino, vou considerar isso na conversa e evitar empurrar uma solução maior do que você procura.'
-      : 'A conversa é o próximo passo para entender se a Consultoria Premium faz sentido para o seu momento.';
-
-    const intro = trainingRoute
-      ? 'Olá, Lucas. Vim pelo site e estou procurando principalmente um treino organizado.'
-      : 'Olá, Lucas. Vim pelo site e quero conhecer melhor a Consultoria Premium LM.';
-    const text = `${intro}\n\nObjetivo: ${answers.objective}\nPrincipal dificuldade: ${answers.difficulty}\nTipo de ajuda: ${answers.help}\n\nQuero entender qual é o melhor próximo passo para mim.`;
-    whatsapp.href = `https://wa.me/5514991174500?text=${encodeURIComponent(text)}`;
-    if (presencialLink) {
-      const params = new URLSearchParams({ objetivo: answers.objective });
-      presencialLink.href = `presencial.html?${params.toString()}`;
-    }
-
+  function finish() {
+    dialog.querySelectorAll('[data-summary]').forEach(node => {
+      node.textContent = answers[node.dataset.summary] || '';
+    });
+    const params = new URLSearchParams({
+      nome: answers.name, objetivo: answers.objective, prazo: answers.deadline
+    });
+    presencial.href = 'presencial.html?' + params.toString();
+    title.textContent = answers.name + ', qual é seu principal objetivo?';
+    const message = 'Olá, Lucas! Meu nome é ' + answers.name +
+      '. Meu objetivo é ' + answers.objective +
+      '. Meu prazo desejado é ' + answers.deadline +
+      '. Gostaria de saber mais sobre o Plano Recomeço e suas condições.';
+    recomeco.href = 'https://wa.me/5514991174500?text=' + encodeURIComponent(message);
     step = 4;
     completed = true;
     render();
-    analytics.track('qualification_completed', {
-      source,
-      route: route(),
-      objective_code: answerCodes.objective,
-      difficulty_code: answerCodes.difficulty,
-      help_code: answerCodes.help
-    });
-  };
+    analyticsSafe('qualification_completed', { source, route: 'offers' });
+  }
 
-  qualificationTriggers.forEach(element => {
-    element.addEventListener('click', () => openFlow(element));
-  });
-
-  dialog.querySelectorAll('[data-answer]').forEach(choice => {
-    choice.addEventListener('click', () => {
-      const question = step;
-      const key = choice.dataset.answer;
-      const value = choice.dataset.value;
-      answers[key] = value;
-      answerCodes[key] = codeMaps[key]?.[value] || 'other';
-      analytics.track(`qualification_q${question}_answered`, { source, answer_code: answerCodes[key] });
-      if (step < 3) {
-        step += 1;
-        render();
-      } else {
-        finish();
-      }
-    });
-  });
-
-  dialog.querySelectorAll('[data-back]').forEach(element => {
-    element.addEventListener('click', () => {
-      const fromStep = step;
-      step = Math.max(1, step - 1);
-      analytics.track('qualification_back', { source, from_step: fromStep, to_step: step });
-      render();
-    });
-  });
-
-  restartButton?.addEventListener('click', () => {
-    analytics.track('qualification_restart', { source, route: route() });
-    resetAnswers();
+  triggers.forEach(button => button.addEventListener('click', () => {
+    if (dialog.open) return;
+    reset();
+    source = button.dataset.source || 'unknown';
+    returnFocus = button;
+    closeReason = 'unknown';
+    dialog.showModal();
     render();
+    analyticsSafe('qualification_started', { source });
+  }));
+
+  document.getElementById('qualification-name-form')?.addEventListener('submit', event => {
+    event.preventDefault();
+    const value = nameInput.value.trim().replace(/\\s+/g, ' ').slice(0, 60);
+    if (!value) { nameInput.setCustomValidity('Informe seu nome.'); nameInput.reportValidity(); return; }
+    nameInput.setCustomValidity('');
+    answers.name = value;
+    title.textContent = value + ', qual é seu principal objetivo?';
+    step = 2;
+    render();
+    analyticsSafe('qualification_q1_answered', { source });
+  });
+  nameInput?.addEventListener('input', () => nameInput.setCustomValidity(''));
+
+  dialog.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => {
+    const key = button.dataset.answer;
+    answers[key] = button.dataset.value;
+    analyticsSafe('qualification_q' + step + '_answered', { source, answer: button.dataset.value });
+    if (step === 3) finish();
+    else { step += 1; render(); }
+  }));
+
+  dialog.querySelectorAll('[data-back]').forEach(button => button.addEventListener('click', () => {
+    step = Math.max(1, step - 1);
+    render();
+  }));
+  dialog.querySelector('[data-restart]')?.addEventListener('click', () => { reset(); render(); });
+  dialog.querySelector('[data-close-qualification]')?.addEventListener('click', () => {
+    closeReason = 'close_button'; dialog.close();
   });
 
-  closeButton?.addEventListener('click', () => {
-    closeReason = 'close_button';
+  presencial?.addEventListener('click', () => analyticsSafe('presencial_details_click', { source }));
+  online?.addEventListener('click', event => {
+    event.preventDefault();
+    closeReason = 'online';
     dialog.close();
+    document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' });
+    analyticsSafe('online_details_click', { source });
   });
-
-  presencialLink?.addEventListener('click', () => {
-    analytics.track('presencial_details_click', { source, objective_code: answerCodes.objective, qualification_completed: completed });
-  });
-
-  whatsapp?.addEventListener('click', () => {
-    closeReason = 'whatsapp';
-    analytics.track('qualification_handoff', { source, route: route() });
-    analytics.track('whatsapp_click', { source, route: route(), qualification_completed: true });
-  });
+  recomeco?.addEventListener('click', () => analyticsSafe('recomeco_inquiry_click', { source }));
 
   dialog.addEventListener('click', event => {
-    if (event.target === dialog) {
-      closeReason = 'backdrop';
-      dialog.close();
-    }
+    if (event.target === dialog) { closeReason = 'backdrop'; dialog.close(); }
   });
-
-  dialog.addEventListener('cancel', () => {
-    closeReason = 'escape';
-  });
-
+  dialog.addEventListener('cancel', () => { closeReason = 'escape'; });
   dialog.addEventListener('close', () => {
-    analytics.track('qualification_closed', {
-      source,
-      step,
-      completed,
-      close_reason: closeReason,
-      route: completed ? route() : 'incomplete'
-    });
+    analyticsSafe('qualification_closed', { source, step, completed, close_reason: closeReason });
     returnFocus?.focus({ preventScroll: true });
   });
-
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') closeMenu();
   });
