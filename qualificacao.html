@@ -1,0 +1,42 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f4f2ed"><title>Encontre seu plano | Lucas Moreno</title><meta name="description" content="Responda três perguntas e conheça as modalidades LM."><link rel="stylesheet" href="styles/foundation.css"><link rel="stylesheet" href="styles/conversion.css"><style>body{margin:0;background:#f4f2ed;color:#17324d;font-family:Manrope,Arial,sans-serif}.qualification-header{background:#fff;border-bottom:1px solid #dedbd3}.qualification-header__inner{max-width:1050px;margin:auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}.qualification-header a{color:#17324d;text-decoration:none}.qualification-header a:first-child{font-weight:800}.conversion-page{width:min(920px,calc(100% - 32px));min-height:calc(100vh - 150px);margin:38px auto 64px;background:#f4f2ed}.conversion-page .conversion{padding:clamp(1.25rem,4vw,3rem)}.conversion-page .conversion__progress{padding-right:0}.conversion-page .conversion__offers{grid-template-columns:repeat(3,minmax(0,1fr))}.conversion-page .conversion__offer{display:flex;flex-direction:column}.conversion-page .conversion__offer .button{margin-top:auto}.qualification-footer{text-align:center;color:#5b6670;font-size:.85rem;padding:20px}@media(max-width:760px){.conversion-page .conversion__offers{grid-template-columns:1fr}.conversion-page{margin:18px auto 40px;min-height:0}}</style><script src="scripts/analytics.js" defer></script><script src="scripts/qualification-page.js" defer></script></head><body><header class="qualification-header"><div class="qualification-header__inner"><a href="index.html">LM | Lucas Moreno</a><a href="index.html">← Voltar ao site</a></div></header>  <main class="conversion-page" id="qualification-dialog" aria-labelledby="qualification-title">
+    <div class="conversion">
+      <div class="conversion__progress" aria-live="polite"><span id="qualification-progress-label">1 de 3</span><span class="conversion__track"><span class="conversion__bar" id="qualification-progress-bar"></span></span></div>
+      <section class="conversion__step" data-step="1">
+        <p class="eyebrow">Bem-vindo à LM</p>
+        <h2 id="qualification-title">Antes de começar, como posso chamar você?</h2>
+        <p class="lead">Sou Lucas Moreno. Quero entender seu objetivo e mostrar as formas de acompanhamento disponíveis.</p>
+        <form id="qualification-name-form"><label class="conversion__label" for="qualification-name">Seu primeiro nome</label><input class="conversion__input" id="qualification-name" name="nome" autocomplete="given-name" maxlength="60" required placeholder="Digite seu nome" /><button class="button" type="submit">Continuar</button></form>
+      </section>
+      <section class="conversion__step" data-step="2" hidden>
+        <p class="eyebrow">Seu objetivo</p><h2 id="qualification-objective-title">O que você quer conquistar?</h2>
+        <div class="choice-grid choice-grid--2">
+          <button class="choice" type="button" data-answer="objective" data-value="Emagrecer">Emagrecer</button>
+          <button class="choice" type="button" data-answer="objective" data-value="Ganhar massa muscular">Ganhar massa muscular</button>
+          <button class="choice" type="button" data-answer="objective" data-value="Melhorar composição corporal">Melhorar composição corporal</button>
+          <button class="choice" type="button" data-answer="objective" data-value="Saúde e condicionamento">Saúde e condicionamento</button>
+          <button class="choice" type="button" data-answer="objective" data-value="Outro objetivo">Outro objetivo</button>
+        </div><button class="conversion__back" type="button" data-back>← Voltar</button>
+      </section>
+      <section class="conversion__step" data-step="3" hidden>
+        <p class="eyebrow">Seu momento</p><h2>Em quanto tempo você gostaria de começar a perceber evolução?</h2>
+        <p class="lead">O prazo ajuda a orientar a conversa, mas não representa uma promessa de resultado.</p>
+        <div class="choice-grid">
+          <button class="choice" type="button" data-answer="deadline" data-value="Até 3 meses">Até 3 meses</button>
+          <button class="choice" type="button" data-answer="deadline" data-value="De 3 a 6 meses">De 3 a 6 meses</button>
+          <button class="choice" type="button" data-answer="deadline" data-value="Mais de 6 meses">Mais de 6 meses</button>
+          <button class="choice" type="button" data-answer="deadline" data-value="Sem prazo definido">Sem prazo definido</button>
+        </div><button class="conversion__back" type="button" data-back>← Voltar</button>
+      </section>
+      <section class="conversion__step" data-step="4" hidden>
+        <p class="eyebrow">Seu próximo passo</p><h2 id="qualification-result-title">Vamos encontrar seu acompanhamento.</h2>
+        <p class="lead">Conheça as modalidades disponíveis. A escolha depende da sua rotina e da disponibilidade de atendimento.</p>
+        <div class="conversion__summary"><p><strong>Nome:</strong> <span data-summary="name"></span></p><p><strong>Objetivo:</strong> <span data-summary="objective"></span></p><p><strong>Prazo desejado:</strong> <span data-summary="deadline"></span></p></div>
+        <div class="conversion__offers">
+          <article class="conversion__offer"><h3>Atendimento Presencial LM</h3><p>Acompanhamento completo presencial.</p><a class="button button--secondary" id="qualification-presencial" href="presencial.html">Saber mais — Presencial</a></article>
+          <article class="conversion__offer"><h3>Consultoria Premium Online</h3><p>Treino, alimentação e acompanhamento à distância. Mensal R$ 229,90, trimestral R$ 600,00 ou semestral R$ 1.080,00.</p><a class="button button--secondary" id="qualification-online" href="online.html">Saber mais — Online</a></article>
+          <article class="conversion__offer"><h3>Plano Recomeço</h3><p>Treino e plano alimentar para 30 dias, por R$ 59,90 em pagamento único. Sem acompanhamento contínuo.</p><a class="button button--secondary" id="qualification-recomeco" href="recomeco.html">Saber mais — Recomeço</a></article>
+        </div>
+        <button class="conversion__back" type="button" data-restart>Alterar respostas</button>
+      </section>
+    </div>
+  </main><footer class="qualification-footer">LM · Direção acima de motivação</footer></body></html>
