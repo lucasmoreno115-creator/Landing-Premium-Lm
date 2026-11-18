@@ -15,7 +15,6 @@ const source=new URLSearchParams(location.search).get('source')||'page';
   const online = document.getElementById('qualification-online');
   const recomeco = document.getElementById('qualification-recomeco');
   let step = 1;
-  let source = 'unknown';
 
   function render() {
     steps.forEach(section => { section.hidden = Number(section.dataset.step) !== step; });
