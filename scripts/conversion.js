@@ -98,6 +98,7 @@
       nome: answers.name, objetivo: answers.objective, prazo: answers.deadline
     });
     presencial.href = 'presencial.html?' + params.toString();
+    online.href = 'online.html?' + params.toString();
     title.textContent = answers.name + ', qual é seu principal objetivo?';
     const message = 'Olá, Lucas! Meu nome é ' + answers.name +
       '. Meu objetivo é ' + answers.objective +
@@ -152,13 +153,7 @@
   });
 
   presencial?.addEventListener('click', () => analyticsSafe('presencial_details_click', { source }));
-  online?.addEventListener('click', event => {
-    event.preventDefault();
-    closeReason = 'online';
-    dialog.close();
-    document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' });
-    analyticsSafe('online_details_click', { source });
-  });
+  online?.addEventListener('click', () => analyticsSafe('online_details_click', { source }));
   recomeco?.addEventListener('click', () => analyticsSafe('recomeco_inquiry_click', { source }));
 
   dialog.addEventListener('click', event => {
