@@ -40,7 +40,6 @@ const source=new URLSearchParams(location.search).get('source')||'page';
     });
     presencial.href = 'presencial.html?' + params.toString();
     online.href = 'online.html?' + params.toString();
-    title.textContent = answers.name + ', qual é seu principal objetivo?';
     recomeco.href = 'recomeco.html?' + params.toString();
     step = 4;
     render();
