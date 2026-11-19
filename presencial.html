@@ -50,17 +50,10 @@ section.content{padding:68px 0}.section-title{font-family:Georgia,serif;font-siz
 </main><footer class="foot"><div class="wrap">© Lucas Moreno · Atendimento Presencial LM · Jaú/SP</div></footer>
 <script>
 (function(){
-const params=new URLSearchParams(location.search);
-const clean=s=>(s||'').trim().slice(0,90).replace(/[\r\n]/g,' ');
-const nome=clean(params.get('nome')||params.get('name'));
-const objetivo=clean(params.get('objetivo')||params.get('goal'));
-const prazo=clean(params.get('prazo')||params.get('deadline'));
 document.querySelectorAll('[data-plan]').forEach(link=>{
 const plano=link.dataset.plan;
 const parts=['Olá, Lucas! Vim pela página de Atendimento Presencial LM.','Tenho interesse no plano '+(plano==='indefinido'?'presencial':plano)+'.'];
-if(nome)parts.push('Meu nome é '+nome+'.');
-if(objetivo)parts.push('Meu objetivo é '+objetivo+'.');
-if(prazo)parts.push('Meu prazo desejado é '+prazo+'.');
+parts.push('Gostaria de começar em breve.');
 parts.push('Gostaria de consultar a disponibilidade de horários em Jaú.');
 link.href='https://wa.me/5514991174500?text='+encodeURIComponent(parts.join(' '));
 });
