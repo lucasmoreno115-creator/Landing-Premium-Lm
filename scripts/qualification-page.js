@@ -35,12 +35,9 @@ const source=new URLSearchParams(location.search).get('source')||'page';
     dialog.querySelectorAll('[data-summary]').forEach(node => {
       node.textContent = answers[node.dataset.summary] || '';
     });
-    const params = new URLSearchParams({
-      nome: answers.name, objetivo: answers.objective, prazo: answers.deadline
-    });
-    presencial.href = 'presencial.html?' + params.toString();
-    online.href = 'online.html?' + params.toString();
-    recomeco.href = 'recomeco.html?' + params.toString();
+    presencial.href = 'presencial.html';
+    online.href = 'online.html';
+    recomeco.href = 'recomeco.html';
     step = 4;
     render();
     analyticsSafe('qualification_completed', { source, route: 'offers' });
